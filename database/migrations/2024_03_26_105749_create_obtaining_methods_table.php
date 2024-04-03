@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('baskets', function (Blueprint $table) {
+        Schema::create('obtaining_methods', function (Blueprint $table) {
             $table->id();
-
             $table->timestamps();
         });
     }
@@ -23,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('basket');
+        Schema::dropIfExists('obtaining_methods');
     }
 };
