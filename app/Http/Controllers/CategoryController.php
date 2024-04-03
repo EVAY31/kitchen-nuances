@@ -17,8 +17,9 @@ class CategoryController extends Controller
      */
     public function index(): Application|Factory|View
     {
-        $categories = Category::whereNull('image')->get();
-
+        $categories = Category::whereNull('image')
+//            ->with('childrenCategories')
+            ->get();
         return view('categories', compact('categories'));
     }
 
@@ -40,14 +41,14 @@ class CategoryController extends Controller
         $image = $data ['image'];
         $imageName = Str::random(40) . '.' . $image->getClientOriginalExtension();
         $image->move(
-            storage_path() . '/app/public/categories/images',
+            storage_path() . '/app/public/categories/image',
             $imageName
         );
 
         $category = new Category();
 
         $category->name = $data['name'];
-//        $category->image = $imageName;
+        $category->image = $imageName;
 
         $category->save();
 

@@ -2,81 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Product\ProductStoreRequest;
-use App\Models\Product;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
+use App\Models\product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View|Application|Factory
+    public function index(): Collection
     {
-        $product = Product::with('categories')->get();
-
-        return view('index', compact('product'));
+        return Product::all();
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View|Application|Factory
+    public function create()
     {
-        $categories = Product::all();
-
-        return view('products.create', ['categories' => $categories]);
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductStoreRequest $request): Product
+    public function store(Request $request)
     {
-        $data = $request->validated();
-
-        $image = $data ['image'];
-        $imageName = Str::random(40) . '.' . $image->getClientOriginalExtension();
-        $image->move(
-            storage_path() . '/app/public/products/images',
-            $imageName
-        );
-
-        $product = new Product();
-
-        $product->name = $data['name'];
-        $product->description = $data['description'] ?? null;
-        $product->content = $data['content'];
-        $product->image = $imageName;
-        $product->article = $data['article'];
-
-        $product->save();
-
-        if (array_key_exists('category_ids', $data)) {
-            $product->categories()->attach($data['category_ids']);
-        }
-
-        $product->load('categories');
-
-        return $product;
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product): View|Application|Factory
+    public function show(product $cr)
     {
-        return view('products.show', compact('product'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(product $cr)
     {
         //
     }
@@ -84,7 +51,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, product $cr)
     {
         //
     }
@@ -92,8 +59,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product): ?bool
+    public function destroy(product $cr)
     {
-        return $product->delete();
+        //
     }
 }
