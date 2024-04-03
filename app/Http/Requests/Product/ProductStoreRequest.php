@@ -22,7 +22,15 @@ class ProductStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'         => 'required|string|min:3|max:25',
+            'image'        => 'required|image:jpg,jpeg,png|max:10240',
+//            автодобавление картинок с автоотображением (Пример:слайдер)
+            'article'      => 'required|string|min:3|max:25',
+//            Код товара
+            'description'  => 'required|string|min:3',
+            'content'      => 'required|string|min:10',
+            'price'        => 'required|bigInteger',
+            'quantity'     => 'required|bigInteger',
         ];
     }
 }
