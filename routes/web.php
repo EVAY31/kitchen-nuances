@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 
@@ -27,5 +26,3 @@ Route::post('/basket/add/{product}', 'BasketController@add')->name('basket.add')
 Route::resource('categories', CategoryController::class)->only(['index', 'show']);
 Route::post('/basket/plus/{product}', 'BasketController@plus')->name('basket.plus');
 Route::post('/basket/minus/{product}', 'BasketController@minus')->name('basket.minus');
-Route::resource('products', ProductController::class);
-Route::resource('categories', CategoryController::class);
