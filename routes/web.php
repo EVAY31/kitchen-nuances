@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 
@@ -26,3 +27,4 @@ Route::post('/basket/add/{product}', 'BasketController@add')->name('basket.add')
 Route::resource('categories', CategoryController::class)->only(['index', 'show']);
 Route::post('/basket/plus/{product}', 'BasketController@plus')->name('basket.plus');
 Route::post('/basket/minus/{product}', 'BasketController@minus')->name('basket.minus');
+Route::resource('brands', BrandController::class)->only(['index','show']);
