@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +17,3 @@ use App\Http\Controllers\CategoryController;
 Route::get('/',[ProductController::class,'index']);
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-Route::resource('categories', CategoryController::class)->only(['index','show']);
-Route::resource('brands', BrandController::class)->only(['index','show']);
