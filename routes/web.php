@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[ProductController::class,'index']);
 
-Route::resource('brands', BrandController::class)->only(['index','show']);
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');

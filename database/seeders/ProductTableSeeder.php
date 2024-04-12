@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
+use Faker\Provider\Lorem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,15 +14,31 @@ class ProductTableSeeder extends Seeder
      */
     public function run(): void
     {
-         \App\Models\Product::factory()->create([
-             'name' => 'Test Product',
-             'email' => 'test@example.com',
-             'image'        => 'URL(https//:)',
-//            автодобавление картинок с автоотображением (Пример:слайдер)
-             'description'  => 'Молоко',
-             'content'      => 'Цельное',
-             'price'        => '60',
-             'quantity'     => '10',
-         ]);
+        $products = [
+            [
+                'title' => 'Сливки',
+                'slug' => 'slivki',
+                'image' => 'cream.jpg',
+                'description' => 'Сливки 10%',
+                'characteristics' => Lorem::text(20),
+                'price' => '100.99',
+                'category_id' => 1,
+                'brand_id' => 1
+            ],
+            [
+                'title' => 'Творог',
+                'slug' => 'tvorog',
+                'image' => 'cottage_cheese.jpg',
+                'description' => 'Творог мягкий 1.5%',
+                'characteristics' => Lorem::text(20),
+                'price' => '100.99',
+                'category_id' => 2,
+                'brand_id' => 2
+            ],
+        ];
+
+        foreach ($products as $product) {
+            Product::factory()->create($product);
+        }
     }
 }
