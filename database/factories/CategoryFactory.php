@@ -17,7 +17,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->randomElement(['Чайники','Тостеры','Вафельницы','Миксеры','Блендеры','Соковыжималки']),
+            'image' => $this->faker->imageUrl(['kettles.jpg', 'toasters.jpg', 'waffle-maker.jpg','mixers.jpg','blenders.jpg', 'juicers.jpg']),
         ];
     }
 }
