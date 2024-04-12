@@ -6,12 +6,37 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+
+/**
+ * @property int    $id
+ * @property string $title
+ * @property string $slug
+ * @property string $image
+ * @property string $description
+ * @property string $characteristics
+ * @property int    $price
+ * @property int    $category_id
+ * @property int    $brand_id
+ * @property string $created_at
+ * @property string $updated_at
+ */
+
 class Product extends Model
 {
     use HasFactory;
 
-    public function Basket(): BelongsToMany
+    public function getRouteKeyName(): string
     {
-        return $this->belongsToMany(Basket::class)->withPivot('quantity');
+        return 'slug';
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function brand(): BelongsToMany
+    {
+        return $this->belongsToMany(Brand::class);
     }
 }
