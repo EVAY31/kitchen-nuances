@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,9 +13,42 @@ class CategoryTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Brand::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+//        $categories = [
+//            [
+//                'title' => 'Чайники',
+//                'image' => 'kettles.jpg',
+//                'slug' => 'pots'
+//            ],
+//            [
+//                'title' => 'Тостеры',
+//                'image' => 'toasters.jpg',
+//                'slug' => 'tosters'
+//            ],
+//            [
+//                'title' => 'Вафельницы',
+//                'image' => 'waffle-maker.jpg',
+//                'slug' => 'vafelnitsa'
+//            ],
+//            [
+//                'title' => 'Миксеры',
+//                'image' => 'mixers.jpg',
+//                'slug' => 'mixers'
+//            ],
+//            [
+//                'title' => 'Блендеры',
+//                'image' => 'blenders.jpg',
+//                'slug' => 'blenders'
+//
+//            ],
+//            [
+//                'title' => 'Соковыжималки',
+//                'image' => 'juicers.jpg',
+//                'slug' => 'juicers'
+//            ],
+//        ];
+
+        foreach ($categories as $category) {
+            Category::query(6)->create($category);
+        }
     }
 }
