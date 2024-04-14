@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Basket\BasketStoreRequest;
+use App\Http\Requests\Basket\BasketUpdateRequest;
 use App\Models\Basket;
 use App\Models\Product;
 use Exception;
@@ -26,10 +27,9 @@ class BasketController extends Controller
             $basket = new Basket();
 
             $basket->price = $data['price'];
-            $basket->total_quantity = $data['quantity']; //ToDo надо высчитывать
-            $basket->user_id = $data['user_id'];
-            $basket->products()->attach($data['product_id']);
+            $basket->user_id = $data['user_id'] ?? null;
             $basket->save();
+            $basket->products()->attach($data['product_id']);
             $basket->load('products');
 
             return $basket;
@@ -48,41 +48,26 @@ class BasketController extends Controller
         return view('baskets.show', compact('basket'));
     }
 
-    public function update(Request $request, Product $product, ?Basket $basket): RedirectResponse
+    public function update(BasketUpdateRequest $request, Product $product, Basket $basket): RedirectResponse
     {
-        $quantity = $request->input('quantity', 1);
-        $action = $request->input('action');
+        $action = $request->validated();
 
-        if ($basket) {
-            // Если корзина существует
-            if ($action === 'remove') {
-                // Уменьшаем количество на единицу при действии "вычитание"
-                $quantity = max($basket->quantity - 1, 0);
-            } elseif ($action === 'add') {
-                // Увеличиваем количество на единицу при действии "добавление"
-                $quantity = $basket->quantity + 1;
-            }
+        // Если корзина существует
+        if ($action === 'remove') {
+            // Уменьшаем количество на единицу при действии "вычитание"
+            $product_quantity = max($basket->pivot->where('product_id', $product->id)->quantity--, 0);
 
-            if ($quantity === 0) {
-                // Если количество стало 0, удаляем продукт из корзины
-                $basket->delete();
-            } else {
-                $basket->quantity = $quantity;
-                $basket->save();
+            if ($product_quantity === 0) {
+                $basket->products()->detach($product->id);
             }
-        } elseif ($product->exists) {
-            // Если корзины нет, но продукт существует, создаем новую запись в корзине
-            $basket = new Basket([
-                'quantity' => 1,
-                'product_id' => $product->id,
-                'user_id' => auth()->id(),
-            ]);
-            $basket->save();
-        } else {
-            // Если ни корзины, ни продукта не существует, удаляем корзину
-            if ($basket) {
-                $basket->delete();
-            }
+        } elseif ($action === 'add') {
+            // Увеличиваем количество на единицу при действии "добавление"
+            $basket->pivot->where('product_id', $product->id)->quantity++;
+        }
+
+        if ($basket->products->count() === 0) {
+            // Если количество стало 0, удаляем продукт из корзины
+            $this->destroy($basket);
         }
 
         return redirect()->back();

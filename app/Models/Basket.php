@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int    $id
- * @property int    $price
- * @property string $total_quantity
- * @property string $user_id
+ * @property float  $price
+ * @property int    $user_id
  * @property int    $product_id
  * @property string $created_at
  * @property string $updated_at
