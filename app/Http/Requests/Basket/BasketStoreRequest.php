@@ -23,8 +23,6 @@ class BasketStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price'        => 'required|integer',
-            'quantity'     => 'required|integer',
             'user_id'      => 'integer',
             'product_id'   => 'required|integer',
         ];

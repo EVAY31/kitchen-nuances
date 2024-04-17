@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->id();
-            $table->integer('total_quantity');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 

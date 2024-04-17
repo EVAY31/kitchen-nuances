@@ -22,5 +22,7 @@ Route::get('/',[ProductController::class,'index']);
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::resource('/categories', CategoryController::class)->only(['index', 'show']);
 Route::resource('/brands', BrandController::class)->only(['index', 'show']);
+Route::get('/basket/{basket}', [BasketController::class, 'show'])->name('basket.show');
+Route::post('/basket', [BasketController::class, 'store'])->name('basket.store');
 Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->name('basket.delete');
