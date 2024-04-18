@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 /**
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $image
  * @property string $description
  * @property string $characteristics
- * @property int    $price
+ * @property float  $price
  * @property int    $category_id
  * @property int    $brand_id
  * @property string $created_at
@@ -30,13 +30,13 @@ class Product extends Model
         return 'slug';
     }
 
-    public function categories(): BelongsToMany
-    {
-        return $this->belongsToMany(Category::class);
-    }
+//    public function categories(): BelongsToMany
+//    {
+//        return $this->belongsToMany(Category::class);
+//    }
 
-    public function brand(): BelongsToMany
+    public function brand(): BelongsTo
     {
-        return $this->belongsToMany(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
 }
