@@ -21,6 +21,7 @@ class ProductFactory extends Factory
     {
         return [
             'title' => $this->faker->randomElement(['Чайники','Тостеры','Вафельницы','Миксеры','Блендеры','Соковыжималки']),
+            'slug' =>$this->faker->randomElement(['teapot','toaster','wafer_maker','mixer','blender','juicer']),
             'image' => $this->faker->randomElement(['cream.jpg', 'cottage_cheese.jpg']),
             'description' => $this->faker->randomElement(['Сливки 10%', 'Творог мягкий 1.5%']),
             'content' => $this->faker->paragraphs(3, true),
