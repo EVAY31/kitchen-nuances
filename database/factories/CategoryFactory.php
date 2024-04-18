@@ -18,7 +18,8 @@ class CategoryFactory extends Factory
     {
         return [
             'title' => $this->faker->randomElement(['Чайники','Тостеры','Вафельницы','Миксеры','Блендеры','Соковыжималки']),
-            'image' => $this->faker->imageUrl(['kettles.jpg', 'toasters.jpg', 'waffle-maker.jpg','mixers.jpg','blenders.jpg', 'juicers.jpg']),
+            'slug' =>$this->faker->randomElement(['teapots','toasters','wafer_makers','mixers','blenders','juicers']),
+            'image' => $this->faker->imageUrl(['teapots.jpg', 'toasters.jpg', 'waffle-maker.jpg','mixers.jpg','blenders.jpg', 'juicers.jpg']),
         ];
     }
 }

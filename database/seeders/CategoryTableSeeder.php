@@ -13,42 +13,42 @@ class CategoryTableSeeder extends Seeder
      */
     public function run(): void
     {
-//        $categories = [
-//            [
-//                'title' => 'Чайники',
-//                'image' => 'kettles.jpg',
-//                'slug' => 'pots'
-//            ],
-//            [
-//                'title' => 'Тостеры',
-//                'image' => 'toasters.jpg',
-//                'slug' => 'tosters'
-//            ],
-//            [
-//                'title' => 'Вафельницы',
-//                'image' => 'waffle-maker.jpg',
-//                'slug' => 'vafelnitsa'
-//            ],
-//            [
-//                'title' => 'Миксеры',
-//                'image' => 'mixers.jpg',
-//                'slug' => 'mixers'
-//            ],
-//            [
-//                'title' => 'Блендеры',
-//                'image' => 'blenders.jpg',
-//                'slug' => 'blenders'
-//
-//            ],
-//            [
-//                'title' => 'Соковыжималки',
-//                'image' => 'juicers.jpg',
-//                'slug' => 'juicers'
-//            ],
-//        ];
+        $categories = [
+            [
+                'title' => 'Чайники',
+                'image' => 'teapots.jpg',
+                'slug' => 'teapots'
+            ],
+            [
+                'title' => 'Тостеры',
+                'image' => 'toasters.jpg',
+                'slug' => 'tosters'
+            ],
+            [
+                'title' => 'Вафельницы',
+                'image' => 'waffle-maker.jpg',
+                'slug' => 'vafelnitsa'
+            ],
+            [
+                'title' => 'Миксеры',
+                'image' => 'mixers.jpg',
+                'slug' => 'mixers'
+            ],
+            [
+                'title' => 'Блендеры',
+                'image' => 'blenders.jpg',
+                'slug' => 'blenders'
+
+            ],
+            [
+                'title' => 'Соковыжималки',
+                'image' => 'juicers.jpg',
+                'slug' => 'juicers'
+            ],
+        ];
 
         foreach ($categories as $category) {
-            Category::query(6)->create($category);
+            Category::query()->create($category);
         }
     }
 }

@@ -18,8 +18,9 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category): array|Collection
+    public function show(Category $category): Category
     {
-        return $category->with('products')->get();
+//        return $category->with('products')->get();
+        return $category->load('products');
     }
 }
