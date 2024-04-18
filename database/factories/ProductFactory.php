@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends Factory<Product>
  */
 class ProductFactory extends Factory
 {
@@ -17,7 +20,15 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->randomElement(['Чайники','Тостеры','Вафельницы','Миксеры','Блендеры','Соковыжималки']),
+            'slug' =>$this->faker->randomElement(['teapot','toaster','wafer_maker','mixer','blender','juicer']),
+            'image' => $this->faker->randomElement(['cream.jpg', 'cottage_cheese.jpg']),
+            'description' => $this->faker->randomElement(['Сливки 10%', 'Творог мягкий 1.5%']),
+            'content' => $this->faker->paragraphs(3, true),
+            'price' => $this->faker->randomNumber(4),
+            'quantity' => $this->faker->numberBetween(1, 100),
+            'product_id' => Category::factory(),
+            'brand_id' => Brand::factory(),
         ];
     }
 }
