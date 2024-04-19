@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Order;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderStoreRequest extends FormRequest
@@ -17,12 +18,14 @@ class OrderStoreRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'user_id' => ['integer', 'exists:users,id'],
+            'obtaining_method' =>  ['required', 'integer', 'in:1,2'],
+            'address' => ['required_if:obtaining_method,2', 'string'],
         ];
     }
 }
