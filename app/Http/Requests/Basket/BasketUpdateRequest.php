@@ -5,7 +5,7 @@ namespace App\Http\Requests\Basket;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BasketStoreRequest extends FormRequest
+class BasketUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,7 @@ class BasketStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id'      => 'integer',
-            'product_id'   => 'required|integer',
+            'action' => 'required|string|in:add,remove'
         ];
     }
 }
