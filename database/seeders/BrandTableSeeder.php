@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Brand;
 use Illuminate\Database\Seeder;
 
 class BrandTableSeeder extends Seeder
@@ -12,9 +12,35 @@ class BrandTableSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Brand::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $brands = [
+            [
+                'title' => 'Tefal',
+                'slug' => 'tefal',
+            ],
+            [
+                'title' => 'Moulinex',
+                'slug' => 'moulinex',
+            ],
+            [
+                'title' => 'Bork',
+                'slug' => 'bork',
+            ],
+            [
+                'title' => 'Polaris',
+                'slug' => 'polaris',
+            ],
+            [
+                'title' => 'Кitfort',
+                'slug' => 'kitfort',
+            ],
+            [
+                'title' => 'Vitek',
+                'slug' => 'vitek',
+            ],
+        ];
+
+        foreach ($brands as $brand) {
+            Brand::factory()->create($brand);
+        }
     }
 }
