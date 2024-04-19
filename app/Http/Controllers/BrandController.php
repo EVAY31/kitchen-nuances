@@ -19,8 +19,9 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Brand $brand): array|Collection
+    public function show(Brand $brand): Brand
     {
-        return $brand->with('products')->get();
+//        return $brand->with('products')->get();
+        return $brand->load('products');
     }
 }

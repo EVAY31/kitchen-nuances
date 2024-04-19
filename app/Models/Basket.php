@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $created_at
  * @property string $updated_at
  */
+
 class Basket extends Model
 {
     use HasFactory;

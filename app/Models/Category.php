@@ -8,36 +8,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
- *@property int    $id
- *@property string $title
- *@property string $slug
- *@property string $image
- *@property int    $product_id
- *@property int    $brand_id
- *@property string $created_at
- *@property string $updated_at
+ * @property int    $id
+ * @property string $name
+ * @property string $image
+ * @property string $created_at
+ * @property string $updated_at
  */
+
 class Category extends Model
 {
     use HasFactory;
-
-    public function getRouteKeyName(): string
+    public function Categories(): HasMany
     {
-        return 'slug';
+        return $this->hasMany(Category::class);
     }
-
-    public function products(): HasMany
+    public function ChildrenCategories()
     {
-        return $this->hasMany(Product::class);
-    }
-
-    public function brand(): BelongsToMany
-    {
-        return $this->belongsToMany(Brand::class);
-    }
-
-    public function Basket(): BelongsToMany
-    {
-        return $this->belongsToMany(Basket::class)->withPivot('quantity');
+        return $this->hasMany(Category::class)->with('categories');
     }
 }
