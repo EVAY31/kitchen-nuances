@@ -102,6 +102,7 @@
                 // инициализация SimpleChatbot
                 chatbot = new SimpleChatbot(configChatbot);
                 chatbot.init();
+                console.log('Реплики успешно загружены:', configChatbot.replicas); // Добавлено для отладки
             } else {
                 console.log(status, request.response);
             }
