@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ProductController::class,'index']);
+//Route::get('/',[ProductController::class,'index']);
+Route::get('/', function () {
+    return view('index');
+});
 
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::resource('/categories', CategoryController::class)->only(['index', 'show']);
