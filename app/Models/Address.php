@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $user_id
- * @property string address
+ * @property string $address
  */
 class Address extends Model
 {
