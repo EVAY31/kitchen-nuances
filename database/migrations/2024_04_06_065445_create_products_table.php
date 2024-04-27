@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('description');
             $table->longText('characteristics');
-            $table->decimal('price');
+            $table->decimal('price', 10, 2)->unsigned();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id');
             $table->timestamps();
