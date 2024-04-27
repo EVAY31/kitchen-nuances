@@ -3,6 +3,7 @@
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 Route::resource('/categories', CategoryController::class)->only(['index', 'show']);
 Route::resource('/brands', BrandController::class)->only(['index', 'show']);
 Route::resource('/addresses', AddressController::class);
+Route::resource('/phones', PhoneController::class);
 Route::get('/basket/{basket}', [BasketController::class, 'show'])->name('basket.show');
 Route::post('/basket', [BasketController::class, 'store'])->name('basket.store');
 Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'update'])->name('basket.update');
