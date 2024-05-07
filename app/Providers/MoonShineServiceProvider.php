@@ -4,6 +4,15 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Models\Address;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Phone;
+use App\Models\Product;
+use App\Models\User;
+use App\MoonShine\Resources\AddressResource;
+use App\MoonShine\Resources\PhoneResource;
+use App\MoonShine\Resources\UserResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuGroup;
@@ -50,8 +59,31 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                ),
             ]),
 
-            MenuItem::make('Documentation', 'https://moonshine-laravel.com')
-               ->badge(fn() => 'Check'),
+            MenuGroup::make('Kitchen-nuances', [
+//                MenuItem::make('Бренды', new BrandResource())
+//                    ->badge(fn() => Brand::count())
+//                    ->icon('heroicons.check-badge'),
+//                MenuItem::make('Категории', new CategoryResource())
+//                    ->badge(fn() => Category::count())
+//                    ->icon('heroicons.list-bullet'),
+//                MenuItem::make('Продукты', new ProductResource())
+//                    ->badge(fn() => Product::count())
+//                    ->icon('heroicons.inbox-arrow-down'),
+                MenuItem::make('Телефоны', new PhoneResource())
+                    ->badge(fn() => Phone::count())
+                    ->icon('heroicons.phone'),
+                MenuItem::make('Адреса', new AddressResource())
+                    ->badge(fn() => Address::count())
+                    ->icon('heroicons.map-pin'),
+                MenuItem::make('Пользователи', new UserResource())
+                    ->badge(fn() => User::count())
+                    ->icon('heroicons.user-group'),
+            ])
+                ->icon('heroicons.bars-4'),
+
+//            MenuItem::make('Documentation', 'https://moonshine-laravel.com')
+//               ->badge(fn() => 'Check'),
+
         ];
     }
 
