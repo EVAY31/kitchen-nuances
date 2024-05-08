@@ -18,7 +18,7 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->randomElement(['Tefal','Moulinex','Bork','Polaris','Кitfort','Vitek']),
+            'title' => $this->faker->randomElement(['Tefal','Polaris','Vitek']),
         ];
     }
 }
