@@ -18,20 +18,8 @@ class BrandTableSeeder extends Seeder
                 'slug' => 'tefal',
             ],
             [
-                'title' => 'Moulinex',
-                'slug' => 'moulinex',
-            ],
-            [
-                'title' => 'Bork',
-                'slug' => 'bork',
-            ],
-            [
                 'title' => 'Polaris',
                 'slug' => 'polaris',
-            ],
-            [
-                'title' => 'Кitfort',
-                'slug' => 'kitfort',
             ],
             [
                 'title' => 'Vitek',
