@@ -11,7 +11,10 @@ use App\Models\Phone;
 use App\Models\Product;
 use App\Models\User;
 use App\MoonShine\Resources\AddressResource;
+use App\MoonShine\Resources\BrandResource;
+use App\MoonShine\Resources\CategoryResource;
 use App\MoonShine\Resources\PhoneResource;
+use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\UserResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
 use MoonShine\MoonShine;
@@ -60,15 +63,15 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
             ]),
 
             MenuGroup::make('Kitchen-nuances', [
-//                MenuItem::make('Бренды', new BrandResource())
-//                    ->badge(fn() => Brand::count())
-//                    ->icon('heroicons.check-badge'),
-//                MenuItem::make('Категории', new CategoryResource())
-//                    ->badge(fn() => Category::count())
-//                    ->icon('heroicons.list-bullet'),
-//                MenuItem::make('Продукты', new ProductResource())
-//                    ->badge(fn() => Product::count())
-//                    ->icon('heroicons.inbox-arrow-down'),
+                MenuItem::make('Бренды', new BrandResource())
+                    ->badge(fn() => Brand::count())
+                    ->icon('heroicons.check-badge'),
+                MenuItem::make('Категории', new CategoryResource())
+                    ->badge(fn() => Category::count())
+                    ->icon('heroicons.list-bullet'),
+                MenuItem::make('Продукты', new ProductResource())
+                    ->badge(fn() => Product::count())
+                    ->icon('heroicons.inbox-arrow-down'),
                 MenuItem::make('Телефоны', new PhoneResource())
                     ->badge(fn() => Phone::count())
                     ->icon('heroicons.phone'),
