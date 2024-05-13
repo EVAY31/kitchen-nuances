@@ -24,6 +24,8 @@ class PhoneResource extends ModelResource
 
     protected string $title = 'Phones';
 
+    public string $column = 'phone';
+
     /**
      * @return list<MoonShineComponent|Field>
      */

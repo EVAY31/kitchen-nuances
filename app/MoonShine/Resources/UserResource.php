@@ -26,6 +26,8 @@ class UserResource extends ModelResource
 
     protected string $title = 'Users';
 
+    public string $column = 'name';
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -40,13 +42,13 @@ class UserResource extends ModelResource
                 Email::make('E-mail', 'email'),
                 HasMany::make('Телефон', 'phones')
                     ->fields([
-                        Text::make('phone'),
+                        Text::make('', 'phone'),
                     ])
                     ->creatable(),
                 BelongsToMany::make('Адрес', 'addresses', resource: new AddressResource())
                     ->selectMode()
                     ->placeholder('Кликните и начните ввод для поиска')
-                    ->inLine(badge: true)
+                    ->inLine(separator: ' ', badge: true)
                     ->creatable(),
             ]),
         ];

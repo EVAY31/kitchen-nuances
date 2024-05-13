@@ -25,6 +25,8 @@ class AddressResource extends ModelResource
 
     protected string $title = 'Addresses';
 
+    public string $column = 'address';
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -33,10 +35,10 @@ class AddressResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                BelongsToMany::make('Пользователь', 'user', resource: new UserResource())
+                BelongsToMany::make('Пользователь', 'users', resource: new UserResource())
                     ->selectMode()
                     ->placeholder('Кликните или начните ввод для поиска')
-                    ->inLine(badge: true),
+                    ->inLine(separator: ' ', badge: true),
 
                 Text::make('Адрес', 'address'),
             ])
