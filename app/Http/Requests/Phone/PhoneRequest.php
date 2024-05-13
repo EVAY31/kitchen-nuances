@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Phone;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PhoneRequest extends FormRequest
@@ -22,7 +23,7 @@ class PhoneRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'phone' => ['required', 'integer', 'max:15'],
+            'phone' => ['required', 'string', 'regex:/^\+7[0-9]{10}$/', 'max:12', 'unique:'.User::class],
         ];
     }
 }

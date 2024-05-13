@@ -7,6 +7,8 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Phone;
 
+use MoonShine\Fields\Relationships\BelongsTo;
+use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
@@ -22,6 +24,8 @@ class PhoneResource extends ModelResource
 
     protected string $title = 'Phones';
 
+    public string $column = 'phone';
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -30,7 +34,11 @@ class PhoneResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-            ]),
+                BelongsTo::make('Пользователь', 'user', resource: new UserResource())
+                    ->placeholder('Кликните или начните ввод для поиска'),
+                Text::make('Телефон', 'phone')
+                    ->mask('+79999999999'),
+        ]),
         ];
     }
 

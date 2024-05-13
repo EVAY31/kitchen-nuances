@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('address');
+            $table->string('address')->unique();
             $table->timestamps();
         });
+
+        Schema::create('address_user', function (Blueprint $table) {
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('user_id');
+        });
+
     }
 
     /**
@@ -25,5 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('addresses');
+        Schema::dropIfExists('address_user');
     }
 };
