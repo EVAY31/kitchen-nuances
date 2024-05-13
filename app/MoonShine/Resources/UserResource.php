@@ -7,9 +7,9 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-use Illuminate\Support\Facades\Hash;
-use MoonShine\Fields\Password;
-use MoonShine\Fields\Slug;
+use MoonShine\Fields\Email;
+use MoonShine\Fields\Relationships\BelongsToMany;
+use MoonShine\Fields\Relationships\HasMany;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
 use MoonShine\Decorations\Block;
@@ -34,26 +34,20 @@ class UserResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Название', 'name')
+                Text::make('Имя', 'name')
                     ->required()
                     ->sortable(),
-                Slug::make('Читаемая ссылка', 'slug')
-                    ->unique()
-                    ->from('name')
-                    ->hint('Заполнится автоматически, если оставить пустым'),
-                Text::make('Email', 'email')
-                    ->rules('required', 'email', 'max:255', 'unique:users,email')
-                    ->sortable(),
-                Password::make('Password', 'password')
-                    ->rules('required', 'confirmed', 'min:8')
-                    ->onlyOnForms()
-                    ->dehydrateUsing(fn ($value) => Hash::make($value)),
-                Text::make('Phone', 'phone')
-                    ->rules('required', 'max:255')
-                    ->sortable(),
-                Text::make('Address', 'address')
-                    ->rules('required', 'max:255')
-                    ->sortable(),
+                Email::make('E-mail', 'email'),
+                HasMany::make('Телефон', 'phones')
+                    ->fields([
+                        Text::make('phone'),
+                    ])
+                    ->creatable(),
+                BelongsToMany::make('Адрес', 'addresses', resource: new AddressResource())
+                    ->selectMode()
+                    ->placeholder('Кликните и начните ввод для поиска')
+                    ->inLine(badge: true)
+                    ->creatable(),
             ]),
         ];
     }
@@ -67,5 +61,10 @@ class UserResource extends ModelResource
     public function rules(Model $item): array
     {
         return [];
+    }
+
+    public function getActiveActions(): array
+    {
+        return ['view', 'update', 'delete'];
     }
 }
