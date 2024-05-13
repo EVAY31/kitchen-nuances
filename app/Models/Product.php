@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 /**
@@ -32,9 +31,9 @@ class Product extends Model
         return 'slug';
     }
 
-    public function categories(): BelongsToMany
+    public function category(): BelongsTo
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function brand(): BelongsTo
@@ -42,8 +41,8 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function basket(): HasMany
+    public function basket(): BelongsToMany
     {
-        return $this->HasMany(Basket::class)->withPivot('quantity');
+        return $this->BelongsToMany(Basket::class)->withPivot('quantity');
     }
 }

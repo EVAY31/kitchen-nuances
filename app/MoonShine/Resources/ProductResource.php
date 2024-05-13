@@ -54,15 +54,10 @@ class ProductResource extends ModelResource
                     ->hideOnIndex(),
                 Text::make('Цена', 'price')
                     ->required(),
-//                цена
-                BelongsToMany::make('Категории', 'categories', resource: new CategoryResource())
-                    ->selectMode()
-                    ->placeholder('Кликните или начните ввод для поиска')
-                    ->inLine(badge: true),
-                BelongsTo::make('Бренд', 'brands', resource: new BrandResource())
-                    ->selectMode()
-                    ->placeholder('Кликните или начните ввод для поиска')
-                    ->inLine(badge: true),
+                BelongsTo::make('Категории', 'category', resource: new CategoryResource())
+                    ->placeholder('Кликните или начните ввод для поиска'),
+                BelongsTo::make('Бренд', 'brand', resource: new BrandResource())
+                    ->placeholder('Кликните или начните ввод для поиска'),
             ]),
         ];
     }

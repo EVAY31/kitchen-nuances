@@ -29,10 +29,4 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
-
-    public function Basket(): BelongsToMany
-    {
-     return $this->belongsToMany(Basket::class)->withPivot('quantity');
-    }
-
 }

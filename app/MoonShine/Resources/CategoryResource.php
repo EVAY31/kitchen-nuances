@@ -26,6 +26,8 @@ class CategoryResource extends ModelResource
 
     protected string $title = 'Categories';
 
+    public string $column = 'title';
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -43,11 +45,7 @@ class CategoryResource extends ModelResource
                     ->hint('Заполниться автоматически, если оставить пустым'),
                 Image::make('Картинка', 'image')
                     ->required()
-                    ->hideOnIndex(),
-                HasMany::make('Продукт', 'products', resource: new ProductResource())
-                    ->selectMode()
-                    ->placeholder('Кликните или начните ввод для поиска')
-                    ->inLine(badge: true),
+                    ->hideOnIndex()
             ]),
         ];
     }

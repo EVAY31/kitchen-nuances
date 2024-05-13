@@ -24,6 +24,8 @@ class BrandResource extends ModelResource
 
     protected string $title = 'Brands';
 
+    public string $column = 'title';
+
     /**
      * @return list<MoonShineComponent|Field>
      */
@@ -31,7 +33,6 @@ class BrandResource extends ModelResource
     {
         return [
             Block::make([
-                ID::make()->sortable(),
                 ID::make()->sortable(),
                 Text::make('Название', 'title')
                     ->required()
