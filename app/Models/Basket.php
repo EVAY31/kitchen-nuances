@@ -22,11 +22,17 @@ class Basket extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->belongsToMany(Product::class)->withPivot(['quantity', 'price']);
     }
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function deleteWithProducts(): void
+    {
+        $this->products()->detach();
+        $this->delete();
     }
 }

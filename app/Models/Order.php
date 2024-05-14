@@ -9,21 +9,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @property int $user_id
- * @property int $obtaining_method_id
  * @property string $address
+ * @property double $final_price
+ * @property int $status
  */
 class Order extends Model
 {
     use HasFactory;
 
+    public const NEW = 0;
+    public const COLLECTED = 1;
+    public const COMPLETED = 2;
+    public const CANCELLED = 3;
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function obtainingMethod(): BelongsTo
-    {
-        return $this->belongsTo(ObtainingMethod::class);
     }
 
     public function products(): BelongsToMany

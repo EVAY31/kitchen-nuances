@@ -29,6 +29,8 @@ class ProductResource extends ModelResource
 
     protected string $title = 'Products';
 
+    public string $column = 'title';
+
     /**
      * @return list<MoonShineComponent|Field>
      */

@@ -11,7 +11,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -100,7 +99,7 @@ class BasketController extends Controller
      */
     public function destroy(Basket $basket): RedirectResponse
     {
-        $basket->delete();
+        $basket->deleteWithProducts();
 
         return redirect()->route('home_page');
         // на что ссылаться...

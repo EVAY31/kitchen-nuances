@@ -12,7 +12,7 @@ class OrderStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,9 +23,7 @@ class OrderStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => ['integer', 'exists:users,id'],
-            'obtaining_method' =>  ['required', 'integer', 'in:1,2'],
-            'address' => ['required_if:obtaining_method,2', 'string'],
+            'address' => 'string|min:10|max:255',
         ];
     }
 }

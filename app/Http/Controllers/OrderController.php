@@ -10,7 +10,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
@@ -20,10 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $orders = $user->orders;
-
-        return $orders;
+        return auth()->user()->orders;
     }
 
     /**
@@ -37,21 +33,30 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(OrderStoreRequest $request, Basket $basket)
+    public function store(OrderStoreRequest $request, Basket $basket): Order|RedirectResponse
     {
         $data = $request->validated();
 
         try {
             $order = new Order();
 
-            $order->user_id = $data['user_id'] ?? null;
-            $order->obtaining_method_id = $data['obtaining_method_id'];
+            $order->user_id = auth()->user() ? auth()->user()->id : null;
             $order->address = $data['address'] ?? null;
+            $order->status = Order::NEW;
+
+            $order->final_price = $basket->products->sum(function ($product) {
+                return $product->price * $product->pivot->quantity;
+            });
+
             $order->save();
+
             foreach ($basket->products as $product) {
                 $order->products()->attach($product->id, ['price' => $product->pivot->price, 'quantity' => $product->pivot->quantity]);
             }
+
             $order->load('products');
+
+            $basket->deleteWithProducts();
 
             return $order;
         } catch (Exception $exception) {

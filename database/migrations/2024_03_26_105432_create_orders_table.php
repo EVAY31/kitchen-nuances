@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('obtaining_method_id');
-            $table->string('address')->default('Магазин');
+            $table->string('address')->nullable();
+            $table->double('final_price');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
 
