@@ -20,15 +20,15 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->randomElement(['Чайники','Тостеры','Вафельницы','Миксеры','Блендеры','Соковыжималки']),
-            'slug' =>$this->faker->randomElement(['teapot','toaster','wafer_maker','mixer','blender','juicer']),
-            'image' => $this->faker->randomElement(['cream.jpg', 'cottage_cheese.jpg']),
-            'description' => $this->faker->randomElement(['Сливки 10%', 'Творог мягкий 1.5%']),
+            'title' => $this->faker->word,
+            'slug' => $this->faker->slug,
+            'image' => $this->faker->imageUrl(500, 500),
+            'description' => $this->faker->sentence,
             'content' => $this->faker->paragraphs(3, true),
-            'price' => $this->faker->randomNumber(4),
-            'quantity' => $this->faker->numberBetween(1, 100),
+            'price' => $this->faker->randomFloat(2, 3000, 30000),
             'product_id' => Category::factory(),
             'brand_id' => Brand::factory(),
+
         ];
     }
 }

@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-/**
- * @property Order[] $orders
- */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -26,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'address',
     ];
 
     /**
@@ -52,8 +51,13 @@ class User extends Authenticatable
         return $this->hasOne(Basket::class);
     }
 
-    public function orders(): HasMany
+    public function addresses(): BelongsToMany
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsToMany(Address::class);
+    }
+
+    public function phones(): HasMany
+    {
+        return $this->hasMany(Phone::class);
     }
 }
