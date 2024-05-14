@@ -7,12 +7,14 @@ namespace App\Providers;
 use App\Models\Address;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Phone;
 use App\Models\Product;
 use App\Models\User;
 use App\MoonShine\Resources\AddressResource;
 use App\MoonShine\Resources\BrandResource;
 use App\MoonShine\Resources\CategoryResource;
+use App\MoonShine\Resources\OrderResource;
 use App\MoonShine\Resources\PhoneResource;
 use App\MoonShine\Resources\ProductResource;
 use App\MoonShine\Resources\UserResource;
@@ -81,6 +83,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Пользователи', new UserResource())
                     ->badge(fn() => User::count())
                     ->icon('heroicons.user-group'),
+                MenuItem::make('Заказы', new OrderResource())
+                    ->badge(fn() => Order::count())
+                    ->icon('heroicons.shopping-cart'),
             ])
                 ->icon('heroicons.bars-4'),
 
