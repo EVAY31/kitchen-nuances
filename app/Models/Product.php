@@ -31,18 +31,18 @@ class Product extends Model
         return 'slug';
     }
 
-//    public function categories(): BelongsToMany
-//    {
-//        return $this->belongsToMany(Category::class);
-//    }
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
     }
 
-    public function orders(): BelongsToMany
+    public function basket(): BelongsToMany
     {
-        return $this->belongsToMany(Order::class);
+        return $this->BelongsToMany(Basket::class)->withPivot('quantity');
     }
 }
