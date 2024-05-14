@@ -22,6 +22,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ProductController::class,'index']);
 
+//ToDo временный роут для чата. Потом удалить
+Route::get('/chat', function () {
+    return view('index');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
