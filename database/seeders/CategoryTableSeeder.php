@@ -22,12 +22,12 @@ class CategoryTableSeeder extends Seeder
             [
                 'title' => 'Тостеры',
                 'image' => 'toasters.jpg',
-                'slug' => 'toasters'
+                'slug' => 'tosters'
             ],
             [
                 'title' => 'Вафельницы',
-                'image' => 'waffleIrons.jpg',
-                'slug' => 'waffleIrons'
+                'image' => 'waffle-maker.jpg',
+                'slug' => 'vafelnitsa'
             ],
             [
                 'title' => 'Миксеры',

@@ -2,11 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Brand>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brand>
  */
 class BrandFactory extends Factory
 {
@@ -18,7 +17,7 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->randomElement(['Tefal','Polaris','Vitek']),
+            //
         ];
     }
 }
