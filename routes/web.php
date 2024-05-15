@@ -3,6 +3,7 @@
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PhoneController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -21,7 +22,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ProductController::class,'index']);
+Route::get('/',[ProductController::class,'index'])->name('home_page');
+//Route::get('/', function () {return view('welcome');}
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('documents', [DocumentController::class, 'index'])->name('documents.index');
+Route::get('documents/download/{document}', [DocumentController::class, 'download'])->name('documents.download');
+
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::resource('/categories', CategoryController::class)->only(['index', 'show']);
 Route::resource('/brands', BrandController::class)->only(['index', 'show']);
@@ -43,5 +48,6 @@ Route::post('/basket', [BasketController::class, 'store'])->name('basket.store')
 Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->name('basket.delete');
 Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/contacts', function () {return view('contacts');})->name('contacts');
 
 require __DIR__.'/auth.php';

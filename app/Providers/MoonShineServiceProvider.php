@@ -14,6 +14,7 @@ use App\Models\User;
 use App\MoonShine\Resources\AddressResource;
 use App\MoonShine\Resources\BrandResource;
 use App\MoonShine\Resources\CategoryResource;
+use App\MoonShine\Resources\DocumentResource;
 use App\MoonShine\Resources\OrderResource;
 use App\MoonShine\Resources\PhoneResource;
 use App\MoonShine\Resources\ProductResource;
@@ -86,6 +87,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 MenuItem::make('Заказы', new OrderResource())
                     ->badge(fn() => Order::count())
                     ->icon('heroicons.shopping-cart'),
+                MenuItem::make('Документы', new DocumentResource())
+                    ->icon('heroicons.outline.document-text'),
             ])
                 ->icon('heroicons.bars-4'),
 
