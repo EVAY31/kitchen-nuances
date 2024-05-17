@@ -32,19 +32,9 @@
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
-
-        h1 {
-            text-align: center;
-            font-size: 20px;
-        }
     </style>
 </head>
-
 <body>
-
-<h1>Чат-бот «SimpleChatbot»</h1>
-
-<!-- chatbot__btn -->
 <div class="chatbot__btn">
     <div class="chatbot__tooltip d-none">Есть вопрос?</div>
 </div>

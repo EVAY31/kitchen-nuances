@@ -46,5 +46,6 @@ Route::get('/basket/{basket}', [BasketController::class, 'show'])->name('basket.
 Route::post('/basket', [BasketController::class, 'store'])->name('basket.store');
 Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->name('basket.delete');
+Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
 
 require __DIR__.'/auth.php';
