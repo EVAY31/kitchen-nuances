@@ -59,7 +59,7 @@ class ProductTableSeeder extends Seeder
                 'characteristics' => json_encode([
                     'Количество скоростей' => '5',
                     'Мощность' => 'Вт: 500',
-                    'Цвет' => 'Красый',
+                    'Цвет' => 'Красный',
                 ]),
                 'price' => 6752.00,
                 'category_id' => 3,

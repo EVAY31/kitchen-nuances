@@ -20,6 +20,7 @@ class ProfileController extends Controller
             'user' => $request->user(),
             'phones' => $request->user()->phones,
             'addresses' => $request->user()->addresses,
+            'order' => $request->user()->order,
         ]);
     }
 

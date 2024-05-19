@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int    $id
  * @property string $title
  * @property string $slug
+ * @property string $image
  * @property string $created_at
  * @property string $updated_at
  */

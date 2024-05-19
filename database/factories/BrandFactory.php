@@ -19,6 +19,8 @@ class BrandFactory extends Factory
     {
         return [
             'title' => $this->faker->randomElement(['Tefal','Polaris','Vitek']),
+            'slug' =>$this->faker->randomElement(['tefal','polaris','vitek']),
+            'image' => $this->faker->imageUrl(['tefal.jpg', 'polaris.jpg', 'vitek.jpg']),
         ];
     }
 }

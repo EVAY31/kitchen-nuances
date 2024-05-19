@@ -32,7 +32,8 @@ class BasketController extends Controller
             $basket->products()->attach($data['product_id'], ['price' => $product->price, 'quantity' => 1]);
             $basket->load('products');
 
-            return $basket;
+//            return $basket;
+            return redirect()->route('basket.show', $basket->id)->with('success', 'Продукт успешно добавлен в корзину');
         } catch (Exception $exception) {
             Log::error('Ошибка создания корзины: ' . $exception);
 
@@ -43,10 +44,13 @@ class BasketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Basket $basket): Basket
+    public function show(Basket $basket): Application|Factory|View
     {
-        return $basket->load('products');
+//        return $basket->load('products');
 //        return view('baskets.show', compact('basket'));
+//        return view('products.show', compact('product', 'products'));
+        $basket->load('products');
+        return view('basket.show', compact('basket'));
     }
 
     public function update(BasketUpdateRequest $request, Basket $basket, Product $product): RedirectResponse

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[ProductController::class,'index'])->name('home_page');
-//Route::get('/', function () {return view('welcome');}
+//Route::get('/', function () {return view('welcome');})->name('home_page');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -49,5 +49,6 @@ Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'upda
 Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->name('basket.delete');
 Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/contacts', function () {return view('contacts');})->name('contacts');
-
+Route::get('/delivery-payment', function () {return view('delivery-payment.index');})->name('delivery-payment');
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 require __DIR__.'/auth.php';

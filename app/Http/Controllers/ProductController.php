@@ -20,17 +20,19 @@ class ProductController extends Controller
 //        return Product::all();
 //        $product = Product::all();
 //        return view('index', compact('product'));
-
-        $products = Product::paginate(12); // Отображает 10 продуктов на странице
-        return view('index', compact('products'));
+        $products = Product::paginate(12);
+//        $products = Product::all(); // Отображает 10 продуктов на странице
+        $basket = auth()->user()->basket ?? null;
+        return view('products.index', compact('products', 'basket'));
     }
 
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product): Product
+    public function show(Product $product): Application|Factory|View
     {
-        return $product;
+//        return $product;
+        return view('products.show', compact('product'));
     }
 }

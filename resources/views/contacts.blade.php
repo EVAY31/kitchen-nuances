@@ -5,8 +5,8 @@
             <h2 class="contacts__title">"Kitchen Nuances" - магазин кухонной техники</h2>
             <div class="shop">
                 <div class="shop__contacts">
-                    <p class="telephone">Телефон для связи: +7 (4912) 500-596</p>
-                    <p class="email">E-mail: info@kitchen-nuances.ru</p>
+                    <p class="telephone"><a href="tel:+74912500596">Телефон для связи: +7 (4912) 500-596</a></p>
+                    <p class="email"><a href="mailto:info@kitchen-nuances.ru">E-mail: info@kitchen-nuances.ru</a></p>
                     <p class="address">Наш адрес: г. Рязань, ул. Чапаева, д. 56</p>
                 </div>
                 <div class="work-schedule">
@@ -26,6 +26,5 @@
         <div class="container__right">
             <div class="map" id="map"></div>
         </div>
-
     </section>
 @endsection

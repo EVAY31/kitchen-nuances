@@ -15,15 +15,18 @@ class BrandTableSeeder extends Seeder
         $brands = [
             [
                 'title' => 'Tefal',
-                'slug' => 'tefal',
+                'image' => 'tefal.jpg',
+                'slug' => 'tefal'
             ],
             [
                 'title' => 'Polaris',
-                'slug' => 'polaris',
+                'image' =>'polaris.jpg',
+                'slug' => 'polaris'
             ],
             [
                 'title' => 'Vitek',
-                'slug' => 'vitek',
+                'image' =>'vitek.jpg',
+                'slug' => 'vitek'
             ],
         ];
 

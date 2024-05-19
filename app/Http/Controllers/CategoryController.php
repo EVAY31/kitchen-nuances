@@ -3,23 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): Collection
+    public function index(): Application|Factory|View
     {
-        return Category::all();
+//        return Category::all();
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Category $category): Category
+    public function show(Category $category): Application|Factory|View
     {
-        return $category->load('products');
+        $category->load('products');
+        return view('categories.show', compact('category'));
     }
 }
+
