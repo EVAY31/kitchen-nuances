@@ -22,10 +22,17 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Brand $brand): Application|Factory|View
+//    public function show(Brand $brand): Application|Factory|View
+//    {
+////        return $brand->with('products')->get();
+//        $brand->load('products');
+//        return view('brands.show', compact('brand'));
+//    }
+
+    public function show($brands): Factory|Application|View
     {
-//        return $brand->with('products')->get();
-        $brand->load('products');
-        return view('brands.show', compact('brand'));
+        $brands = Brand::findOrFail($brands);
+        $products = $brands->products; // Получаем все продукты для данной категории
+        return view('brands.show', compact('brands', 'products'));
     }
 }

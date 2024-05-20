@@ -50,5 +50,5 @@ Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->
 Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/contacts', function () {return view('contacts');})->name('contacts');
 Route::get('/delivery-payment', function () {return view('delivery-payment.index');})->name('delivery-payment');
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
 require __DIR__.'/auth.php';
