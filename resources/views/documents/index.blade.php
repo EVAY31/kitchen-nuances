@@ -9,7 +9,7 @@
                         <div class="blog-post-thumb">
                             <div class="blog-post-title">
                                 <h3>
-                                    <a href="{{ route('documents.download', $document->slug) }}">
+                                    <a href="{{ route('documents.download', $document->slug) }}" target="_blank">
                                         {{ $document->title }}
                                     </a>
                                 </h3>
