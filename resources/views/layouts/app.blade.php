@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/OpenSans-Regular.woff2') }}">
     <link href="https://unpkg.com/simplebar@latest/dist/simplebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-{{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
+    {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     @vite(['resources/js/app.js'])
@@ -58,9 +58,9 @@
             <a href="{{ route('home_page') }}"><img class="logo" src="{{ asset('assets/image/Логотип.svg') }}"
                                                     alt="Логотип"></a>
             <div class="menu_user">
-{{--                <a class="menu_user_icon basket" href="{{ route('basket.show') }}">--}}
-{{--                                    <a class="menu_user_icon basket" href="{{ route('basket.show', session('basket_id')) }}">--}}
-{{--                </a>--}}
+                {{--                <a class="menu_user_icon basket" href="{{ route('basket.show') }}">--}}
+                {{--                                    <a class="menu_user_icon basket" href="{{ route('basket.show', session('basket_id')) }}">--}}
+                {{--                </a>--}}
                 <a class="menu_user_icon user">
                     <svg height="31px"
                          style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
@@ -103,24 +103,10 @@
                 <p class="right__text">Переходя по&nbsp;ссылкам ниже, Вы&nbsp;соглашаетесть с&nbsp;их&nbsp;условиями</p>
                 <a href="{{ route('documents.index') }}" class="right__link">Политика конфиденциальности
                     <br>Политика обработки персональных данных</a>
-                {{--                <ul>--}}
-                {{--                    <li class="right__link"><a  href="{{ asset('assets/documents/Политика конфиденциальности.pdf') }}" download="">Политика конфиденциальности</a></li>--}}
-                {{--                    <li class="right__link"><a  href="{{ asset('assets/documents/Политика обработки персональных данных.pdf') }}" download="">Политика обработки персональных данных</a></li>--}}
-                {{--                    <a class="main" href="2.7_Skillbox_Layout.docx" download="">Скачать программу курса</a>--}}
-                {{--                </ul>--}}
             </div>
         </div>
 
     </footer>
-
-    {{--    <a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>--}}
-    {{--<script src="{{ asset('assets/js/jquery.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/js/particles.min.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/js/app.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/js/jquery.parallax.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/js/smoothscroll.js') }}"></script>--}}
-    {{--<script src="{{ asset('assets/js/custom.js') }}"></script>--}}
 </div>
 <script src="https://api-maps.yandex.ru/2.1/?apikey=вашAPI-ключ&lang=ru_RU" defer></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
