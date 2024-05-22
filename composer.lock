@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4079b0e544cb4b18d66bae4397a4bf1",
+    "content-hash": "200d7a314297f3646f07ba9b8453fa4a",
     "packages": [
         {
             "name": "brick/math",
@@ -2043,16 +2043,16 @@
         },
         {
             "name": "moonshine/moonshine",
-            "version": "2.13.1",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moonshine-software/moonshine.git",
-                "reference": "ad7cdf6174e5b592bafdf56df9105f3c60962fe7"
+                "reference": "b98aef3905c7ea8b07b38a56faddc15de2453a4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moonshine-software/moonshine/zipball/ad7cdf6174e5b592bafdf56df9105f3c60962fe7",
-                "reference": "ad7cdf6174e5b592bafdf56df9105f3c60962fe7",
+                "url": "https://api.github.com/repos/moonshine-software/moonshine/zipball/b98aef3905c7ea8b07b38a56faddc15de2453a4d",
+                "reference": "b98aef3905c7ea8b07b38a56faddc15de2453a4d",
                 "shasum": ""
             },
             "require": {
@@ -2128,7 +2128,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-05-09T09:34:29+00:00"
+            "time": "2024-05-21T10:15:03+00:00"
         },
         {
             "name": "nesbot/carbon",

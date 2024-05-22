@@ -5,17 +5,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ env('APP_NAME') }}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    {{--    <title>{{ env('APP_NAME') }}</title>--}}
 
     <link rel="stylesheet" href="{{ asset('assets/fonts/OpenSans-Regular.ttf') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/OpenSans-Regular.woff') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/OpenSans-Regular.woff2') }}">
     <link href="https://unpkg.com/simplebar@latest/dist/simplebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    @vite(['resources/js/app.js'])
+{{--    @vite(['resources/js/app.js'])--}}
 
 </head>
 <body>
@@ -24,7 +27,7 @@
         <div class="container header__container">
             <nav class="nav header__nav">
                 {{--                    -----------------------------------------Выпадающий список-------------------------------------------}}
-                <ul class="header__list reset-list">
+                <ul class="header__list reset-list nav__list header-nav__list">
                     <li class="header__item">
                         <button class="header__item-btn js-header-dropdown-btn" data-path="one">
                             <strong class="header__item-heading">Каталог</strong>
@@ -44,9 +47,6 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-                {{--                    ----------------------------------------(Конец кода)-Выпадающий список-------------------------------------------}}
-                <ul class="nav__list list-reset header-nav__list">
                     <li class="nav__item"><a class="nav__link" href="{{ route('delivery-payment') }}"
                                              aria-label="Нажав ссылку, Вы переместитесь в раздел доставка и оплата">Доставка
                             и оплата</a></li>
@@ -54,6 +54,15 @@
                                              aria-label="Нажав ссылку, Вы переместитесь в раздел контакты">Контакты</a>
                     </li>
                 </ul>
+                {{--                    ----------------------------------------(Конец кода)-Выпадающий список-------------------------------------------}}
+                {{--                <ul class="nav__list list-reset header-nav__list">--}}
+                {{--                    <li class="nav__item"><a class="nav__link" href="{{ route('delivery-payment') }}"--}}
+                {{--                                             aria-label="Нажав ссылку, Вы переместитесь в раздел доставка и оплата">Доставка--}}
+                {{--                            и оплата</a></li>--}}
+                {{--                    <li class="nav__item"><a class="nav__link" href="{{ route('contacts') }}"--}}
+                {{--                                             aria-label="Нажав ссылку, Вы переместитесь в раздел контакты">Контакты</a>--}}
+                {{--                    </li>--}}
+                {{--                </ul>--}}
             </nav>
             <a href="{{ route('home_page') }}"><img class="logo" src="{{ asset('assets/image/Логотип.svg') }}"
                                                     alt="Логотип"></a>

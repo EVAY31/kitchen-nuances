@@ -21,7 +21,7 @@ class Dashboard extends Page
 
     public function title(): string
     {
-        return $this->title ?: 'Админ панель';
+        return $this->title ?: 'Dashboard';
     }
 
     /**
