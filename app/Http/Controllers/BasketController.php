@@ -39,6 +39,7 @@ class BasketController extends Controller
 
             return redirect()->route('home_page');
         }
+        return view('basket.store', compact('basket'));
     }
 
     /**

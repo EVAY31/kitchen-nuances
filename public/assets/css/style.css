@@ -15,7 +15,7 @@
     --color-orange: #E4540C;
     --color-Mantle: #8c998c;
     --color-gray: #615f5f;
-
+    --dark-DEFAULT: #312A28;
     --color-dusty-gray: #999999;
     --color-dusty_gray2: #969696;
     --color-biloba-flower: #d1a9f0;
@@ -332,7 +332,7 @@ a.user {
     cursor: pointer;
 }
 
-.header__item-heading{
+.header__item-heading {
     z-index: 1;
 }
 
@@ -366,11 +366,12 @@ a.user {
 .header__item-btn:focus-visible:not(:hover):not(:active)::before {
     opacity: 1;
 }
-.header__item-btn:hover, .header__item-btn:hover::after{
+
+.header__item-btn:hover, .header__item-btn:hover::after {
     color: var(--color-orange);
 }
 
-.header__item-btn:active, .header__item-btn:active::after{
+.header__item-btn:active, .header__item-btn:active::after {
     color: var(--color-orange);
 }
 
@@ -545,6 +546,7 @@ a.user {
 .swiper-pagination-bullet-active {
     background: var(--swiper-pagination-color, var(--color-white));
 }
+
 .swiper-button-prev, .swiper-rtl .swiper-button-next {
     left: var(--swiper-navigation-sides-offset, 52px);
     right: auto;
@@ -554,6 +556,7 @@ a.user {
     right: var(--swiper-navigation-sides-offset, 52px);
     left: auto;
 }
+
 /*__________________________________________(Конец кода)Выпадающие списки________________________________________*/
 
 
@@ -726,4 +729,3 @@ main {
     align-items: center;
     width: 100%;
 }
-

@@ -105,4 +105,26 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
     {
         return [];
     }
+
+    //...
+
+    public function boot(): void
+    {
+        parent::boot();
+
+        moonShineAssets()->add([
+            '/css/style.css',
+            '/js/main.js',
+        ]);
+        moonshineColors()
+            ->background('#000000')
+            ->content('#312A28')
+            ->tableRow('#E4540C')
+            ->dividers('#ffffff')
+            ->borders('#ffffff')
+            ->buttons('#000000')
+            ->primary('#312A28')
+            ->secondary('#30BF39');
+
+    }
 }

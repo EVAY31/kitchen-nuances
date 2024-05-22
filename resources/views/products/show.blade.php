@@ -16,7 +16,6 @@
                     <form action="{{ route('basket.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        {{--            <button type="submit" class="btn btn-primary">Добавить в корзину</button>--}}
                         <button type="submit" class="btn-add">Добавить в корзину</button>
                     </form>
                 </div>
