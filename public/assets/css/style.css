@@ -800,3 +800,34 @@ main {
     }
 }
 
+.basket__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table {
+    padding: 5px;
+    border: 1px solid #a0a0a0;
+    border-collapse: collapse;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.tbody, tr {
+    /*display: flex;*/
+    align-items: center;
+}
+
+.tbody, tr td {
+    padding: 0 30px;
+}
+
+.basket__counter {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 10px;
+    align-items: center;
+}

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container basket__container">
         <h1>Корзина</h1>
 
         @if ($basket->products->count() > 0)
@@ -28,7 +28,7 @@
                             @endif
                         </td>
                         <td>{{ number_format($product->pivot->price, 2, '.', ' ') }} &#8381;</td>
-                        <td>
+                        <td class="basket__counter">
                             <form action="{{ route('basket.update', ['basket' => $basket->id, 'product' => $product->id]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="action" value="remove">
@@ -56,7 +56,7 @@
             <form action="{{ route('basket.delete', $basket->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Очистить корзину</button>
+                <button type="submit" class="btn btn-add">Очистить корзину</button>
             </form>
         @else
             <p>Корзина пуста.</p>
