@@ -2,18 +2,18 @@
 @section('content')
     <section class="choice container">
         <div class="choice_visualization">
-            <h2>{{ $product->title }}</h2>
+            <h2 class="decoration__item">{{ $product->title }}</h2>
             <img class="choice_image" src="{{ asset('storage/' . $product->image) }}" alt="">
             </div>
-                <div class="description"><p>{{ $product->description }}</p>
-                    <h3>Характеристики:</h3>
-                    <ul>
+                <div class="description"><p class="decoration__item">{{ $product->description }}</p>
+                    <h3 class="decoration__item">Характеристики:</h3>
+                    <ul class="decoration__item">
                         @foreach(json_decode($product->characteristics, true) as $key => $value)
                             <li>{{ $key }}: {{ $value }}</li>
                         @endforeach
                     </ul>
-                    <p>Цена: {{ number_format($product->price, 2, '.', ' ') }} &#8381;</p>
-                    <form action="{{ route('basket.store') }}" method="POST">
+                    <p class="decoration__item">Цена: {{ number_format($product->price, 2, '.', ' ') }} &#8381;</p>
+                    <form class="decoration__item" action="{{ route('basket.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <button type="submit" class="btn-add">Добавить в корзину</button>
