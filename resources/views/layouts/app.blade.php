@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
     {{--    @vite(['resources/js/app.js'])--}}
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
 </head>
 <body>
@@ -71,66 +74,64 @@
             <a href="{{ route('home_page') }}"><img class="logo" src="{{ asset('assets/image/Логотип.svg') }}"
                                                     alt="Логотип"></a>
             <div class="menu_user">
-                {{--                @auth--}}
-                <a class="menu_user_icon basket">
-                    {{--                       href="{{ $basket ? route('basket.show', $basket->id) : route('products.index') }}">--}}
-                    <!-- Ваш SVG-код для иконки корзины -->
-                    <svg width="31px" height="26px" viewBox="0 0 49 56"
-                         xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Basket" fill="#ffffff">
-                                <path
-                                    d="M48.2,55.5 L0.5,55.5 L0.5,13.5 L48.2,13.5 L48.2,55.5 Z M3.5,52.5 L45.2,52.5 L45.2,16.5 L3.5,16.5 L3.5,52.5 Z"
-                                    id="Shape"></path>
-                                <path
-                                    d="M38,25.7 L35,25.7 L35,11.3 C35,7 31.5,3.5 27.2,3.5 L21.6,3.5 C17.3,3.5 13.8,7 13.8,11.3 L13.8,25.7 L10.8,25.7 L10.8,11.3 C10.8,5.3 15.6,0.5 21.6,0.5 L27.2,0.5 C33.2,0.5 38,5.3 38,11.3 L38,25.7 Z"
-                                    id="Shape"></path>
+                @auth
+                    <a class="menu_user_icon basket">
+                        {{--                       href="{{ $basket ? route('basket.show', $basket->id) : route('products.index') }}">--}}
+                        <!-- Ваш SVG-код для иконки корзины -->
+                        <svg width="31px" height="26px" viewBox="0 0 49 56"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Basket" fill="#ffffff">
+                                    <path
+                                        d="M48.2,55.5 L0.5,55.5 L0.5,13.5 L48.2,13.5 L48.2,55.5 Z M3.5,52.5 L45.2,52.5 L45.2,16.5 L3.5,16.5 L3.5,52.5 Z"
+                                        id="Shape"></path>
+                                    <path
+                                        d="M38,25.7 L35,25.7 L35,11.3 C35,7 31.5,3.5 27.2,3.5 L21.6,3.5 C17.3,3.5 13.8,7 13.8,11.3 L13.8,25.7 L10.8,25.7 L10.8,11.3 C10.8,5.3 15.6,0.5 21.6,0.5 L27.2,0.5 C33.2,0.5 38,5.3 38,11.3 L38,25.7 Z"
+                                        id="Shape"></path>
+                                </g>
                             </g>
-                        </g>
-                    </svg>
-                </a>
+                        </svg>
+                    </a>
 
-                {{--                    <li>--}}
-                {{--                        <a href="{{ route('profile.edit') }}">--}}
-                {{--                            {{ __('Profile') }}--}}
-                {{--                        </a>--}}
-                {{--                    </li>--}}
-                {{--                    <li>--}}
-                {{--                        <a href="{{ route('logout') }}"--}}
-                {{--                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
-                {{--                            {{ __('Log out') }}--}}
-                {{--                        </a>--}}
-                {{--                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-                {{--                            @csrf--}}
-                {{--                        </form>--}}
-                {{--                    </li>--}}
-                {{--                @endauth--}}
+                    <li>
+                        <a href="{{ route('profile.edit') }}">
+                            {{ __('Profile') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Log out') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                @else
+                    <a class="menu_user_icon basket" href="{{ route('login') }}">
+                        <!-- Ваш SVG-код для иконки корзины -->
+                        <svg width="31px" height="26px" viewBox="0 0 49 56" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Basket" fill="#ffffff">
+                                    <path
+                                        d="M48.2,55.5 L0.5,55.5 L0.5,13.5 L48.2,13.5 L48.2,55.5 Z M3.5,52.5 L45.2,52.5 L45.2,16.5 L3.5,16.5 L3.5,52.5 Z"
+                                        id="Shape"></path>
+                                    <path
+                                        d="M38,25.7 L35,25.7 L35,11.3 C35,7 31.5,3.5 27.2,3.5 L21.6,3.5 C17.3,3.5 13.8,7 13.8,11.3 L13.8,25.7 L10.8,25.7 L10.8,11.3 C10.8,5.3 15.6,0.5 21.6,0.5 L27.2,0.5 C33.2,0.5 38,5.3 38,11.3 L38,25.7 Z"
+                                        id="Shape"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </a>
 
-                {{--                @guest--}}
-                {{--                    <a class="menu_user_icon basket" href="{{ route('login') }}">--}}
-                {{--                        <!-- Ваш SVG-код для иконки корзины -->--}}
-                {{--                        <svg width="31px" height="26px" viewBox="0 0 49 56" version="1.1"--}}
-                {{--                             xmlns="http://www.w3.org/2000/svg"--}}
-                {{--                             xmlns:xlink="http://www.w3.org/1999/xlink">--}}
-                {{--                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">--}}
-                {{--                                <g id="Basket" fill="#ffffff">--}}
-                {{--                                    <path--}}
-                {{--                                        d="M48.2,55.5 L0.5,55.5 L0.5,13.5 L48.2,13.5 L48.2,55.5 Z M3.5,52.5 L45.2,52.5 L45.2,16.5 L3.5,16.5 L3.5,52.5 Z"--}}
-                {{--                                        id="Shape"></path>--}}
-                {{--                                    <path--}}
-                {{--                                        d="M38,25.7 L35,25.7 L35,11.3 C35,7 31.5,3.5 27.2,3.5 L21.6,3.5 C17.3,3.5 13.8,7 13.8,11.3 L13.8,25.7 L10.8,25.7 L10.8,11.3 C10.8,5.3 15.6,0.5 21.6,0.5 L27.2,0.5 C33.2,0.5 38,5.3 38,11.3 L38,25.7 Z"--}}
-                {{--                                        id="Shape"></path>--}}
-                {{--                                </g>--}}
-                {{--                            </g>--}}
-                {{--                        </svg>--}}
-                {{--                    </a>--}}
-
-                {{--                    <li><a href="{{ route('login') }}">Log in</a></li>--}}
-                {{--                    @if (Route::has('register'))--}}
-                {{--                        <li><a href="{{ route('register') }}">Register</a></li>--}}
-                {{--                    @endif--}}
-                {{--                @endguest--}}
+                    <li><a href="{{ route('login') }}">Log in</a></li>
+{{--                    @if (Route::has('register'))--}}
+{{--                        <li><a href="{{ route('register') }}">Register</a></li>--}}
+{{--                    @endif--}}
+                @endauth
                 {{--                ______________________--}}
 
 
