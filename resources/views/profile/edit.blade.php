@@ -1,29 +1,62 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
+@section('content')
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+    <h2>{{ $user->name }}</h2>
+    <br>
+    <p>
+        {{ $user->email }}
+    </p>
+    <br>
+    @foreach($user->phones as $phone)
+        <p>
+            {{ $phone->phone }}
+        </p>
+        <br>
+    @endforeach
+    @foreach($user->addresses as $address)
+        <p>
+            {{ $address->address }}
+        </p>
+        <br>
+    @endforeach
+    @foreach($orders as $order)
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Номер заказа</th>
+                <th>Бренд</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Итого</th>
+                <th>Статус заказа</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ $order->id }}</td>
+                </tr>
+                @foreach($order->products as $product)
+                    <tr>
+                        <td>{{ $product->title }}</td>
+                        <td>
+                            @if ($product->brand)
+                                <img src="{{ asset('storage/' . $product->brand->image) }}" alt="{{ $product->brand->title }}" width="50">
+                            @else
+                                Без бренда
+                            @endif
+                        </td>
+                        <td>{{ number_format($product->pivot->price, 2, '.', ' ') }} &#8381;</td>
+                        <td class="basket__counter">
+                            {{ $product->pivot->quantity }}
+                        </td>
+                        <td>{{ $product->pivot->price * $product->pivot->quantity }} &#8381;</td>
+                    </tr>
+                @endforeach
+                    <tr>
+                        <td>{{ __('order.status.' . $order->status) }}</td>
+                    </tr>
+            </tbody>
+        </table>
+    @endforeach
+@endsection

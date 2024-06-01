@@ -44,7 +44,7 @@ class OrderResource extends ModelResource
                 BelongsToMany::make('Товары', 'products', resource: new ProductResource())
                     ->selectMode()
                     ->inLine(separator: ' ', badge: true)
-                    ->disabled()
+                    ->required()
                     ->hideOnIndex(),
                 Select::make('Статус', 'status')
                     ->options([
