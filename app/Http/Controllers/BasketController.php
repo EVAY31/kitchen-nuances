@@ -32,15 +32,16 @@ class BasketController extends Controller
             $basket->products()->attach($data['product_id'], ['price' => $product->price, 'quantity' => 1]);
             $basket->load('products');
 
-//            return $basket;
-            return redirect()->route('basket.show', $basket->id)
+            session()->put('basket', $basket);
+
+            return redirect()
+                ->back()
                 ->with('success', 'Продукт успешно добавлен в корзину');
         } catch (Exception $exception) {
             Log::error('Ошибка создания корзины: ' . $exception);
 
             return redirect()->route('home_page');
         }
-        return view('basket.store', compact('basket'));
     }
 
     /**
@@ -84,6 +85,9 @@ class BasketController extends Controller
                 $basket->products()->detach($product->id);
             }
 
+            $basket->load('products');
+            session()->put('basket', $basket);
+
             if ($basket->products->count() === 0) {
                 // Если количество стало 0, удаляем продукт из корзины
                 $this->destroy($basket);
@@ -95,6 +99,9 @@ class BasketController extends Controller
             } else {
                 $basket->products()->attach($product->id, ['price' => $product->price, 'quantity' => 1]);
             }
+
+            $basket->load('products');
+            session()->put('basket', $basket);
         }
 
         return redirect()->back();
@@ -106,6 +113,8 @@ class BasketController extends Controller
     public function destroy(Basket $basket): RedirectResponse
     {
         $basket->deleteWithProducts();
+
+        session()->forget('basket');
 
         return redirect()->route('home_page');
         // на что ссылаться...

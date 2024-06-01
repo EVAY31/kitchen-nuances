@@ -29,28 +29,28 @@
                         </td>
                         <td>{{ number_format($product->pivot->price, 2, '.', ' ') }} &#8381;</td>
                         <td class="basket__counter">
-                            <form action="{{ route('basket.update', ['basket' => $basket->id, 'product' => $product->id]) }}" method="POST">
+                            <form action="{{ route('basket.update', [$basket->id, $product->slug]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="action" value="remove">
                                 <button type="submit" class="btn btn-sm btn-danger">-</button>
                             </form>
                             {{ $product->pivot->quantity }}
-                            <form action="{{ route('basket.update', ['basket' => $basket->id, 'product' => $product->id]) }}" method="POST">
+                            <form action="{{ route('basket.update', [$basket->id, $product->slug]) }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="action" value="add">
                                 <button type="submit" class="btn btn-sm btn-success">+</button>
                             </form>
                         </td>
                         <td>{{ $product->pivot->price * $product->pivot->quantity }} &#8381;</td>
+                @endforeach
                         <td>
-                            <form action="{{ route('basket.update', ['basket' => $basket->id, 'product' => $product->id]) }}" method="POST">
+                            <form action="{{ route('basket.delete', [$basket->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                                <button type="submit" class="btn btn-sm btn-danger">Очистить корзину</button>
                             </form>
                         </td>
                     </tr>
-                @endforeach
                 </tbody>
             </table>
             <form action="{{ route('basket.delete', $basket->id) }}" method="POST">
