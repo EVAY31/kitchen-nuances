@@ -1,6 +1,5 @@
 
 /*_______________________________________Кнопка на верх на сайте_________________________________________*/
-
 const btnUp = {
     el: document.querySelector('.btn-up'),
     scrolling: false,
@@ -30,20 +29,17 @@ const btnUp = {
                 return;
             }
             this.scrolling = false;
-            // если пользователь прокрутил страницу более чем на 200px
             if (scrollY > 400) {
-                // сделаем кнопку .btn-up видимой
                 this.show();
             } else {
-                // иначе скроем кнопку .btn-up
                 this.hide();
             }
         });
-        // при нажатии на кнопку .btn-up
+
         document.querySelector('.btn-up').onclick = () => {
             this.scrolling = true;
             this.hide();
-            // переместиться в верхнюю часть страницы
+
             window.scrollTo({
                 top: 0,
                 left: 0,
@@ -56,19 +52,17 @@ const btnUp = {
 btnUp.addEventListener();
 // ________________________________________________Начало (кода Свайпера)__________________________________________________
 const swiper = new Swiper(".swiper", {
-    // Optional parameters
+
     direction: "horizontal",
     loop: true,
     autoplay: {
         delay: 5000,
     },
 
-    // If we need pagination
     pagination: {
         el: ".swiper-pagination",
     },
 
-    // Navigation arrows
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -206,61 +200,29 @@ function init() {
     map.behaviors.disable(['scrollZoom']); // отключаем скролл карты (опционально)
 }
 // ________________________________________________Конец (кода карты)___________________________________________________
+//______________________________________________________БУРГЕР__________________________________________________________
+document.querySelector(".burger").addEventListener("click", function() {
+    this.classList.toggle("active");
+})
+const burger = document.querySelector('.burger');
+const menu = document.querySelector('.header__nav');
+const body = document.body;
+const menuLinks = document.querySelectorAll('.nav__link');
+const close = document.querySelector('.close');
+const search = document.querySelector('.search');
 
- // Выпадающие списки в header-bottom
-function controlDropdowns() {
-    const dropdownButtons = siteContainer.querySelectorAll('.header-bottom-nav__btn');
 
-    dropdownButtons.forEach((dropdownButton) => {
-        dropdownButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const dropdown = dropdownButton.nextElementSibling;
-            if (dropdown.classList.contains('open')) {
-                dropdown.classList.remove('open');
-                dropdownButton.classList.remove('rotait');
-            } else {
-                closeDropdowns();
-                dropdown.classList.add('open');
-                dropdownButton.classList.add('rotait');
-                getLink(dropdown);
-            };
-        });
+burger.addEventListener('click', (e) => {
+    e.currentTarget.classList.toggle('burger--active');
+    menu.classList.toggle('header__nav--active');
+    body.classList.toggle('stop-scroll');
+
+});
+
+menuLinks.forEach(el => {
+    el.addEventListener('click', (e) => {
+        burger.classList.remove('burger--active');
+        menu.classList.remove('header__nav--active');
+        body.classList.remove('stop-scroll');
     });
-
-    document.addEventListener('click', (event) => {
-        if (event.target.classList.contains('dropdown__container')) {
-            return;
-        } else {
-            closeDropdowns();
-        };
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-            closeDropdowns();
-        };
-    });
-
-};
-function closeDropdowns() {
-    const dropdownButtons = document.querySelectorAll('.header-bottom-nav__btn');
-    dropdownButtons.forEach((dropdownButton) => {
-        dropdownButton.classList.remove('rotait');
-        dropdownButton.nextElementSibling.classList.remove('open');
-    });
-};
-
-function getLink(dropdown) {
-    const dropdownLiks = dropdown.querySelectorAll('.dropdown__link');
-    dropdownLiks.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            closeDropdowns();
-        });
-    });
-};
-
-controlDropdowns();
-
-
-
+});

@@ -1,0 +1,255 @@
+@media all and (min-width: 1920px) and (max-width: 3800px) {
+    main {
+        padding-top: 3.2%;
+    }
+}
+@media all and (max-width: 1440px) {
+    .container {
+        margin: 0 auto;
+        padding: 0 52px;
+        max-width: 1440px;
+        color: var(--color-white);
+    }
+
+    .header__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 30%;
+    }
+
+    .nav__item:not(:last-child) {
+        margin-right: 20px;
+        letter-spacing: 1.5px;
+    }
+
+    main {
+        padding-top: 5.2%;
+    }
+
+    .swiper {
+        width: 1440px;
+        height: 1200px;
+    }
+
+    .slide-text {
+        /*max-width: 1250px;*/
+        max-width: 1440px;
+        font-size: 50px;
+    }
+
+    .slide__title2 {
+        padding: 800px 0 0 800px;
+    }
+
+    .slide__title3 {
+        padding: 50px 50px 0 946px;
+    }
+
+    .slide__title5 {
+        padding: 50px 50px 0 810px;
+    }
+
+}
+
+@media all and (max-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+
+    main {
+        padding-top: 8%;
+    }
+
+    .swiper {
+        width: 1024px;
+        height: 700px;
+    }
+
+    .left-text {
+        width: 232px;
+    }
+
+    .center__text {
+        font-size: 14px;
+    }
+
+    .swiper-slide {
+        height: 700px;
+    }
+
+    .slide-text {
+        max-width: 1023px;
+        font-size: 34px;
+        line-height: 1.5;
+    }
+
+    .slide__title2 {
+        padding: 500px 0 0 550px;
+    }
+
+    .slide__title3 {
+        padding: 50px 50px 0 657px;
+    }
+
+    .slide__title5 {
+        padding: 50px 50px 0 510px;
+    }
+}
+
+@media all and (max-width: 924px) {
+
+}
+
+@media all and (max-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+
+    .swiper {
+        width: 768px;
+        height: 500px;
+    }
+
+    .swiper-slide {
+        height: 496px;
+    }
+
+    .slide-text {
+        max-width: 768px;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+
+    .slide__title2 {
+        padding: 355px 0 0 407px;
+    }
+
+    .slide__title3 {
+        padding: 50px 50px 0 557px;
+    }
+
+    .slide__title5 {
+        padding: 50px 50px 0 439px;
+    }
+
+    .product {
+        width: 300px;
+        height: 300px;
+    }
+
+    .footer__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo-footer {
+        width: 80%;
+    }
+
+    .footer__left ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .left-text {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    .footer {
+        padding: 30px 0;
+    }
+
+    .center__text {
+        display: none;
+    }
+
+    .center__list {
+        margin: 0;
+        text-align: center;
+    }
+
+    .footer__right {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .right__text {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 535px) {
+    .container {
+        max-width: 375px;
+    }
+
+    .swiper {
+        width: 375px;
+        height: 252px;
+    }
+
+    .swiper-slide {
+        height: 250px;
+    }
+
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+        left: 20px;
+        right: auto;
+    }
+
+    .swiper-button-next, .swiper-rtl .swiper-button-prev {
+        right: 20px;
+        left: auto;
+    }
+
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 20px;
+    }
+
+    .slide-text {
+        max-width: 375px;
+        font-size: 15px;
+    }
+
+    .slide__title1 {
+        padding: 16px 241px 0 20px;
+    }
+
+    .slide__title2 {
+        padding: 171px 0 0 200px;
+    }
+
+    .slide__title3 {
+        padding: 11px 0 0 236px;
+    }
+
+    .slide__title4 {
+        padding: 20px;
+    }
+
+    .slide__title5 {
+        padding: 10px 0 0 200px;
+    }
+
+    .product {
+        width: 100px;
+        height: 100px;
+    }
+
+    .product__title {
+        width: 100px;
+    }
+
+    .center__container {
+        row-gap: 190px;
+    }
+
+    .left-text {
+        width: 100%;
+        text-align: center;
+    }
+}

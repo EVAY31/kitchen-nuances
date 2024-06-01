@@ -48,7 +48,7 @@ Route::post('/basket', [BasketController::class, 'store'])->name('basket.store')
 Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->name('basket.delete');
 Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
-Route::get('/contacts', function () {return view('contacts');})->name('contacts');
+Route::get('/contacts', function () {return view('contacts.contacts');})->name('contacts');
 Route::get('/delivery-payment', function () {return view('delivery-payment.index');})->name('delivery-payment');
 
 require __DIR__.'/auth.php';

@@ -19,6 +19,7 @@ use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Json;
 
 /**
  * @extends ModelResource<Product>
@@ -60,6 +61,8 @@ class ProductResource extends ModelResource
                     ->placeholder('Кликните или начните ввод для поиска'),
                 BelongsTo::make('Бренд', 'brand', resource: new BrandResource())
                     ->placeholder('Кликните или начните ввод для поиска'),
+                Json::make('characteristics')
+                    ->keyValue(),
             ]),
         ];
     }
