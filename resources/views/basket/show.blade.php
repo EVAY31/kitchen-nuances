@@ -13,7 +13,6 @@
                     <th>Цена</th>
                     <th>Количество</th>
                     <th>Итого</th>
-                    <th>Действия</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,15 +41,8 @@
                             </form>
                         </td>
                         <td>{{ $product->pivot->price * $product->pivot->quantity }} &#8381;</td>
-                @endforeach
-                        <td>
-                            <form action="{{ route('basket.delete', [$basket->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Очистить корзину</button>
-                            </form>
-                        </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
             <form action="{{ route('basket.delete', $basket->id) }}" method="POST">
@@ -58,6 +50,8 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-add">Очистить корзину</button>
             </form>
+
+            <a href="{{ route('orders.create') }}" class="btn btn-add">Оформить заказ</a>
         @else
             <p>Корзина пуста.</p>
         @endif

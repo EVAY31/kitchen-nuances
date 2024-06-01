@@ -27,13 +27,13 @@ class OrderController extends Controller
      */
     public function create(): View|Application|Factory
     {
-        return view('orders.create');
+        return view('order.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(OrderStoreRequest $request, Basket $basket): Order|RedirectResponse
+    public function store(OrderStoreRequest $request, Basket $basket): Application|Factory|View|RedirectResponse
     {
         $data = $request->validated();
 
@@ -57,8 +57,9 @@ class OrderController extends Controller
             $order->load('products');
 
             $basket->deleteWithProducts();
+            session()->forget('basket');
 
-            return $order;
+            return view('order.created');
         } catch (Exception $exception) {
             Log::error('Ошибка создания заказа: ' . $exception);
 
