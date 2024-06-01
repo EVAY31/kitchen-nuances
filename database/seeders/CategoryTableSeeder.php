@@ -25,11 +25,6 @@ class CategoryTableSeeder extends Seeder
                 'slug' => 'toasters'
             ],
             [
-                'title' => 'Вафельницы',
-                'image' => 'waffleIrons.jpg',
-                'slug' => 'waffleIrons'
-            ],
-            [
                 'title' => 'Миксеры',
                 'image' => 'mixers.jpg',
                 'slug' => 'mixers'
@@ -44,6 +39,11 @@ class CategoryTableSeeder extends Seeder
                 'title' => 'Соковыжималки',
                 'image' => 'juicers.jpg',
                 'slug' => 'juicers'
+            ],
+            [
+                'title' => 'Вафельницы',
+                'image' => 'waffleIrons.jpg',
+                'slug' => 'waffleIrons'
             ],
         ];
 

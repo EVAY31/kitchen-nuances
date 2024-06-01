@@ -10,7 +10,6 @@ use App\Models\Product;
 
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Relationships\BelongsTo;
-use MoonShine\Fields\Relationships\BelongsToMany;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Text;
 use MoonShine\Fields\TinyMce;
@@ -19,6 +18,7 @@ use MoonShine\Decorations\Block;
 use MoonShine\Fields\ID;
 use MoonShine\Fields\Field;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Fields\Json;
 
 /**
  * @extends ModelResource<Product>
@@ -49,10 +49,7 @@ class ProductResource extends ModelResource
                 Image::make('Картинка', 'image')
                     ->required()
                     ->hideOnIndex(),
-                TinyMce::make('Краткое описание', 'description')
-                    ->hideOnIndex(),
-                TinyMce::make('Текст', 'characteristics')
-                    ->required()
+                TinyMce::make('Описание', 'description')
                     ->hideOnIndex(),
                 Text::make('Цена', 'price')
                     ->required(),
@@ -60,6 +57,10 @@ class ProductResource extends ModelResource
                     ->placeholder('Кликните или начните ввод для поиска'),
                 BelongsTo::make('Бренд', 'brand', resource: new BrandResource())
                     ->placeholder('Кликните или начните ввод для поиска'),
+                Json::make('Характеристики', 'characteristics')
+                    ->keyValue()
+                    ->removable()
+                    ->hideOnIndex(),
             ]),
         ];
     }

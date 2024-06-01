@@ -7,6 +7,7 @@ namespace App\MoonShine\Resources;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Brand;
 
+use MoonShine\Fields\Image;
 use MoonShine\Fields\Slug;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\ModelResource;
@@ -41,6 +42,9 @@ class BrandResource extends ModelResource
                     ->unique()
                     ->from('title')
                     ->hint('Заполниться автоматически, если оставить пустым'),
+                Image::make('Картинка', 'image')
+                    ->required()
+                    ->hideOnIndex()
             ]),
         ];
     }

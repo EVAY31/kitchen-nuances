@@ -32,7 +32,11 @@ class BasketController extends Controller
             $basket->products()->attach($data['product_id'], ['price' => $product->price, 'quantity' => 1]);
             $basket->load('products');
 
-            return $basket;
+            session()->put('basket', $basket);
+
+            return redirect()
+                ->back()
+                ->with('success', 'Продукт успешно добавлен в корзину');
         } catch (Exception $exception) {
             Log::error('Ошибка создания корзины: ' . $exception);
 
@@ -43,10 +47,13 @@ class BasketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Basket $basket): Basket
+    public function show(Basket $basket): Application|Factory|View
     {
-        return $basket->load('products');
+//        return $basket->load('products');
 //        return view('baskets.show', compact('basket'));
+//        return view('products.show', compact('product', 'products'));
+        $basket->load('products');
+        return view('basket.show', compact('basket'));
     }
 
     public function update(BasketUpdateRequest $request, Basket $basket, Product $product): RedirectResponse
@@ -78,6 +85,9 @@ class BasketController extends Controller
                 $basket->products()->detach($product->id);
             }
 
+            $basket->load('products');
+            session()->put('basket', $basket);
+
             if ($basket->products->count() === 0) {
                 // Если количество стало 0, удаляем продукт из корзины
                 $this->destroy($basket);
@@ -89,6 +99,9 @@ class BasketController extends Controller
             } else {
                 $basket->products()->attach($product->id, ['price' => $product->price, 'quantity' => 1]);
             }
+
+            $basket->load('products');
+            session()->put('basket', $basket);
         }
 
         return redirect()->back();
@@ -100,6 +113,8 @@ class BasketController extends Controller
     public function destroy(Basket $basket): RedirectResponse
     {
         $basket->deleteWithProducts();
+
+        session()->forget('basket');
 
         return redirect()->route('home_page');
         // на что ссылаться...

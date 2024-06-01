@@ -40,11 +40,10 @@ class UserResource extends ModelResource
                     ->required()
                     ->sortable(),
                 Email::make('E-mail', 'email'),
-                HasMany::make('Телефон', 'phones')
+                HasMany::make('Телефон', 'phones', resource: new PhoneResource())
                     ->fields([
                         Text::make('', 'phone'),
-                    ])
-                    ->creatable(),
+                    ]),
                 BelongsToMany::make('Адрес', 'addresses', resource: new AddressResource())
                     ->selectMode()
                     ->placeholder('Кликните и начните ввод для поиска')

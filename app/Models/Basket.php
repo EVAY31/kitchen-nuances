@@ -22,7 +22,8 @@ class Basket extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class)->withPivot(['quantity', 'price']);
+        return $this->belongsToMany(Product::class)
+            ->withPivot(['quantity', 'price']);
     }
 
     public function user(): BelongsTo
