@@ -90,7 +90,7 @@
                             </g>
                         </svg>
                         @if(session('basket'))
-                            <span class="basket_count">{{ session('basket')->products->count() }}</span>
+                            <span class="basket_count">{{ session('basket')->products()->sum('quantity') }}</span>
                         @endif
                     </a>
                     @auth
