@@ -26,6 +26,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $casts =  [
+        'characteristics' => 'json',
+    ];
 
     public function getRouteKeyName(): string
     {
