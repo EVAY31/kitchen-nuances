@@ -8,7 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    {{--    <title>{{ env('APP_NAME') }}</title>--}}
 
     <link rel="stylesheet" href="{{ asset('assets/fonts/OpenSans-Regular.woff') }}" as="font" type="font/woff"
           crossorigin>
@@ -20,10 +19,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
-    {{--    @vite(['resources/js/app.js'])--}}
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
 </head>
 <body>
@@ -60,40 +57,32 @@
                     </li>
                 </ul>
                 {{--                    ----------------------------------------(Конец кода)-Выпадающий список-------------------------------------------}}
-                {{--                <ul class="nav__list list-reset header-nav__list">--}}
-                {{--                    <li class="nav__item"><a class="nav__link" href="{{ route('delivery-payment') }}"--}}
-                {{--                                             aria-label="Нажав ссылку, Вы переместитесь в раздел доставка и оплата">Доставка--}}
-                {{--                            и оплата</a></li>--}}
-                {{--                    <li class="nav__item"><a class="nav__link" href="{{ route('contacts') }}"--}}
-                {{--                                             aria-label="Нажав ссылку, Вы переместитесь в раздел контакты">Контакты</a>--}}
-                {{--                    </li>--}}
-                {{--                </ul>--}}
             </nav>
-
-
-            <a href="{{ route('home_page') }}"><img class="logo" src="{{ asset('assets/image/Логотип.svg') }}"
-                                                    alt="Логотип"></a>
+            <a class="header__logo" href="{{ route('home_page') }}"><img class="logo"
+                                                                         src="{{ asset('assets/image/Логотип.svg') }}"
+                                                                         alt="Логотип"></a>
             <div class="menu_user">
-                    <a class="menu_user_icon basket" href="{{ session('basket') ? route('basket.show', session('basket')->id) : '' }}">
-                        <svg width="31px" height="26px" viewBox="0 0 49 56"
-                             xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Basket" fill="#ffffff">
-                                    <path
-                                        d="M48.2,55.5 L0.5,55.5 L0.5,13.5 L48.2,13.5 L48.2,55.5 Z M3.5,52.5 L45.2,52.5 L45.2,16.5 L3.5,16.5 L3.5,52.5 Z"
-                                        id="Shape"></path>
-                                    <path
-                                        d="M38,25.7 L35,25.7 L35,11.3 C35,7 31.5,3.5 27.2,3.5 L21.6,3.5 C17.3,3.5 13.8,7 13.8,11.3 L13.8,25.7 L10.8,25.7 L10.8,11.3 C10.8,5.3 15.6,0.5 21.6,0.5 L27.2,0.5 C33.2,0.5 38,5.3 38,11.3 L38,25.7 Z"
-                                        id="Shape"></path>
-                                </g>
+                <a class="menu_user_icon basket"
+                   href="{{ session('basket') ? route('basket.show', session('basket')->id) : '' }}">
+                    <svg width="31px" height="26px" viewBox="0 0 49 56"
+                         xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Basket" fill="#ffffff">
+                                <path
+                                    d="M48.2,55.5 L0.5,55.5 L0.5,13.5 L48.2,13.5 L48.2,55.5 Z M3.5,52.5 L45.2,52.5 L45.2,16.5 L3.5,16.5 L3.5,52.5 Z"
+                                    id="Shape"></path>
+                                <path
+                                    d="M38,25.7 L35,25.7 L35,11.3 C35,7 31.5,3.5 27.2,3.5 L21.6,3.5 C17.3,3.5 13.8,7 13.8,11.3 L13.8,25.7 L10.8,25.7 L10.8,11.3 C10.8,5.3 15.6,0.5 21.6,0.5 L27.2,0.5 C33.2,0.5 38,5.3 38,11.3 L38,25.7 Z"
+                                    id="Shape"></path>
                             </g>
-                        </svg>
-                        @if(session('basket'))
-                            <span class="basket_count">{{ session('basket')->products()->sum('quantity') }}</span>
-                        @endif
-                    </a>
-                    @auth
+                        </g>
+                    </svg>
+                    @if(session('basket'))
+                        <span class="basket_count">{{ session('basket')->products()->sum('quantity') }}</span>
+                    @endif
+                </a>
+                @auth
                     <li>
                         <a href="{{ route('profile.edit') }}">
                             {{ __('Profile') }}
@@ -109,37 +98,33 @@
                         </form>
                     </li>
                 @else
-                    <li><a href="{{ route('login') }}">Log in</a></li>
+                    <li><a class="menu_user_icon user" href="{{ route('login') }}">
+                            <svg height="31px"
+                                 style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                 viewBox="0 0 32 32" width="28px" xml:space="preserve"
+                                 xmlns="http://www.w3.org/2000/svg"
+
+                                 xmlns:xlink="http://www.w3.org/1999/xlink"><path
+                                    d="M4.554,23.764c-0.111,0.322 -0.049,0.679 0.163,0.946c2.544,3.201 6.645,5.29 11.273,5.29c4.628,0 8.729,-2.089 11.273,-5.29c0.212,-0.267 0.273,-0.624 0.163,-0.946c-1.538,-4.485 -6.07,-7.764 -11.436,-7.764c-5.366,0 -9.898,3.279 -11.436,7.764Zm2.088,0.131c1.441,-3.458 5.093,-5.895 9.348,-5.895c4.255,0 7.907,2.437 9.348,5.895c-2.206,2.508 -5.577,4.105 -9.348,4.105c-3.771,0 -7.142,-1.597 -9.348,-4.105l0,-0Z"
+                                    fill="white"/>
+                                <path
+                                    d="M15.99,2c-3.312,0 -6,2.689 -6,6c-0,3.311 2.688,6 6,6c3.311,0 6,-2.689 6,-6c-0,-3.311 -2.689,-6 -6,-6Zm-0,2c2.208,0 4,1.792 4,4c-0,2.208 -1.792,4 -4,4c-2.208,0 -4,-1.792 -4,-4c-0,-2.208 1.792,-4 4,-4Z"
+                                    fill="white"/></svg>
+                            {{--                            Log in--}}
+                        </a></li>
                 @endauth
                 {{--                ______________________--}}
-
-
-
-
-
-{{--                <a class="menu_user_icon basket" href="{{ route('basket.show', auth()->user()->$basket->id) }}">--}}
-{{--                                                    <a class="menu_user_icon basket" href="{{ route('basket.show', session('basket_id')) }}">--}}
-{{--                                </a>--}}
-                <a class="menu_user_icon user">
-                    <svg height="31px"
-                         style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
-                         viewBox="0 0 32 32" width="28px" xml:space="preserve"
-                         xmlns="http://www.w3.org/2000/svg"
-
-                         xmlns:xlink="http://www.w3.org/1999/xlink"><path
-                            d="M4.554,23.764c-0.111,0.322 -0.049,0.679 0.163,0.946c2.544,3.201 6.645,5.29 11.273,5.29c4.628,0 8.729,-2.089 11.273,-5.29c0.212,-0.267 0.273,-0.624 0.163,-0.946c-1.538,-4.485 -6.07,-7.764 -11.436,-7.764c-5.366,0 -9.898,3.279 -11.436,7.764Zm2.088,0.131c1.441,-3.458 5.093,-5.895 9.348,-5.895c4.255,0 7.907,2.437 9.348,5.895c-2.206,2.508 -5.577,4.105 -9.348,4.105c-3.771,0 -7.142,-1.597 -9.348,-4.105l0,-0Z"
-                            fill="white"/>
-                        <path
-                            d="M15.99,2c-3.312,0 -6,2.689 -6,6c-0,3.311 2.688,6 6,6c3.311,0 6,-2.689 6,-6c-0,-3.311 -2.689,-6 -6,-6Zm-0,2c2.208,0 4,1.792 4,4c-0,2.208 -1.792,4 -4,4c-2.208,0 -4,-1.792 -4,-4c-0,-2.208 1.792,-4 4,-4Z"
-                            fill="white"/></svg>
-                </a>
+            </div>
+            <div class="burger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
             </div>
         </div>
     </header>
     <main>
         @yield('content')
         {{--        /*_______________________________________Кнопка на верх на сайте_________________________________________*/--}}
-
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
             <symbol id="arrow-up-short" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -154,8 +139,6 @@
             </svg>
         </div>
         {{--        /*_______________________________________(Конец) Кнопка на верх на сайте_________________________________________*/--}}
-
-
     </main>
     <footer class="footer">
         <div class="container footer__container">
@@ -165,13 +148,13 @@
                             <img class="logo-footer"
                                  src="{{ asset('assets/image/Логотип.svg') }}"
                                  alt="Логотип"></a></li>
-                    <li class="left__item left-text"><a href="{{ route('home_page') }}">Интернет магазин бытовой кухонной
+                    <li class="left__item left-text"><a href="{{ route('home_page') }}">Интернет магазин бытовой
+                            кухонной
                             техники</a></li>
                 </ul>
             </div>
             <div class="footer__center">
                 <ul class="center__list">
-                    {{--                    <li class="center__item"><a href="#">Каталог</a></li>--}}
                     <li class="header__item">
                         <button class="nav__link header__item-btn2 js-header-dropdown-btn" data-path="two">
                             <strong class="header__item-heading">Каталог</strong>
@@ -199,15 +182,12 @@
             </div>
             <div class="footer__right">
                 <p class="right__text">Переходя по&nbsp;ссылкам ниже, Вы&nbsp;соглашаетесть с&nbsp;их&nbsp;условиями</p>
-                {{--                <a href="{{ route('documents.index') }}" class="right__link">Политика конфиденциальности--}}
-                {{--                    <br>Политика обработки персональных данных</a>--}}
                 <ul>
                     <li class="right__link"><a href="{{ asset('assets/documents/Политика конфиденциальности.pdf') }}"
                                                download="" target="_blank">Политика конфиденциальности</a></li>
                     <li class="right__link"><a
                             href="{{ asset('assets/documents/Политика обработки персональных данных.pdf') }}"
                             download="" target="_blank">Политика обработки персональных данных</a></li>
-                    {{--                                    <a class="main" href="2.7_Skillbox_Layout.docx" download="">Скачать программу курса</a>--}}
                 </ul>
             </div>
         </div>
