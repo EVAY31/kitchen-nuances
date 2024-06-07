@@ -384,13 +384,13 @@ a.user {
 .header__item-btn:hover, .header__item-btn:hover::after,
 .header__item-btn2:hover, .header__item-btn2:hover::after {
     color: var(--color-orange);
-    opacity: 0;
+    /*opacity: 1;*/
 }
 
 .header__item-btn:active, .header__item-btn:active::after,
 .header__item-btn2:active, .header__item-btn2:active::after {
     color: var(--color-Medium-Vermilion);
-    opacity: 0;
+    /*opacity: 0;*/
 }
 
 .header__item-btn:focus, .header__item-btn:focus::after,

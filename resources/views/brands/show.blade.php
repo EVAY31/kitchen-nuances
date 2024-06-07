@@ -24,7 +24,6 @@
 @extends('layouts.app')
 @section('content')
     <section class="center">
-        <div class="container">
             <div class="container center__container">
                 @if($products->isEmpty())
                     <p>В этой категории нет продуктов.</p>
@@ -40,6 +39,5 @@
                     @endforeach
                 @endif
             </div>
-        </div>
     </section>
 @endsection

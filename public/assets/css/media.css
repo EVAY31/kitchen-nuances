@@ -739,10 +739,11 @@
     /*_____________Бургер(Конец)______________*/
     .menu_user {
         order: 2;
+        width: 30%;
     }
 
     main {
-        padding-top: 22%;
+        padding-top: 15%;
     }
 
     .center__container {
@@ -1465,5 +1466,52 @@
     .map {
         width: 300px;
         height: 250px;
+    }
+
+    thead, tr th {
+        font-size: 9px;
+        padding: 0 7px;
+    }
+
+    tbody, tr td {
+        font-size: 6px;
+        padding: 10px 2px;
+    }
+
+    .basket__counter {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 27px 5px;
+        align-items: center;
+    }
+
+    .basket__container {
+        padding: 0 5px;
+    }
+
+    thead {
+        font-size: 15px;
+    }
+
+    tbody {
+        font-size: 13px;
+        width: 100%;
+    }
+
+    .btn-add {
+        background-color: var(--color-orange);
+        color: white;
+        padding: 10px 3px;
+        border: none;
+        border-radius: 5px;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .basket-center {
+        color: var(--color-white);
+        background-color: var(--color-Armadillo);
+        padding: 75px 15px 15px 15px;
     }
 }
