@@ -25,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[ProductController::class,'index'])->name('home_page');
 //Route::get('/', function () {return view('welcome');})->name('home_page');
 
+//ToDo временный роут для чата. Потом удалить
+Route::get('/chat', function () {
+    return view('index');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -47,6 +52,7 @@ Route::get('/basket/{basket}', [BasketController::class, 'show'])->name('basket.
 Route::post('/basket', [BasketController::class, 'store'])->name('basket.store');
 Route::post('/basket/{basket}/update/{product}', [BasketController::class, 'update'])->name('basket.update');
 Route::delete('/basket/delete/{basket}', [BasketController::class, 'destroy'])->name('basket.delete');
+Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
 Route::post('/orders/{basket}', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/contacts', function () {return view('contacts.contacts');})->name('contacts');
