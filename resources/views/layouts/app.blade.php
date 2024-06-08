@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="{{ asset('assets/css/normalize.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('assets/css/chatbot.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/media.css') }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -40,11 +41,11 @@
                                 <ul class="header__drop-list reset-list">
                                     <li class="header__dropdown-item"><a
                                             class="header__item-link header__item-link--tintoretto"
-                                            href="{{ route('categories.index') }}"><span
+                                            href="{{ route('categories.index') }}" alt="Кнопка с категориями по нажатию, Вам будет доступен перечень всех категорий товаров"><span
                                                 class="header__item-text">Категории</span></a></li>
                                     <li class="header__dropdown-item"><a
                                             class="header__item-link header__item-link--fridrih"
-                                            href="{{ route('brands.index') }}">Бренд</a></li>
+                                            href="{{ route('brands.index') }}" alt="Кнопка с брендами по нажатию, Вам будет доступен перечень всех брендов товаров">Бренд</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -60,10 +61,11 @@
             </nav>
             <a class="header__logo" href="{{ route('home_page') }}"><img class="logo"
                                                                          src="{{ asset('assets/image/Логотип.svg') }}"
-                                                                         alt="Логотип"></a>
+                                                                         alt="Логотип который перебросит Вас на главную страницу"></a>
             <div class="menu_user">
                 <a class="menu_user_icon basket"
-                   href="{{ session('basket') ? route('basket.show', session('basket')->id) : '' }}">
+                   href="{{ session('basket') ? route('basket.show', session('basket')->id) : '' }}"
+                   alt="Кнопка для переходва в Вашу корзину">
                     <svg width="31px" height="26px" viewBox="0 0 49 56"
                          xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -84,13 +86,13 @@
                 </a>
                 @auth
                     <li>
-                        <a href="{{ route('profile.edit') }}">
+                        <a href="{{ route('profile.edit') }}" alt="Ссылка на профиль пользователя">
                             {{ __('Profile') }}
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="{{ route('logout') }} "
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();" alt="Ссылка выход из профиль пользователя">
                             {{ __('Log out') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -98,7 +100,7 @@
                         </form>
                     </li>
                 @else
-                    <li><a class="menu_user_icon user" href="{{ route('login') }}">
+                    <li><a class="menu_user_icon user" href="{{ route('login') }}" alt="Ссылка на страницу регистрации и аутентификации">
                             <svg height="31px"
                                  style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
                                  viewBox="0 0 32 32" width="28px" xml:space="preserve"
@@ -147,8 +149,8 @@
                     <li class="left__item"><a href="{{ route('home_page') }}">
                             <img class="logo-footer"
                                  src="{{ asset('assets/image/Логотип.svg') }}"
-                                 alt="Логотип"></a></li>
-                    <li class="left__item left-text"><a href="{{ route('home_page') }}">Интернет магазин бытовой
+                                 alt="Логотип который перебросит Вас на главную страницу"></a></li>
+                    <li class="left__item left-text"><a href="{{ route('home_page') }}" alt="Надпись магазина которая перебросит Вас на главную страницу">Интернет магазин бытовой
                             кухонной
                             техники</a></li>
                 </ul>
@@ -166,7 +168,7 @@
                                     <li class="header__dropdown-item2"><a
                                             class="header__item-link header__item-link--tintoretto"
                                             href="{{ route('categories.index') }}"><span
-                                                class="header__item-text">Категории</span></a></li>
+                                                class="header__item-text" >Категории</span></a></li>
                                     <li class="header__dropdown-item2"><a
                                             class="header__item-link header__item-link--fridrih"
                                             href="{{ route('brands.index') }}">Бренд</a></li>
@@ -174,9 +176,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="center__item"><a class="nav__link" href="{{ route('delivery-payment') }}">Доставка и
+                    <li class="center__item"><a class="nav__link" href="{{ route('delivery-payment') }}" aria-label="Нажав ссылку, Вы переместитесь в раздел доставка и оплата">Доставка и
                             оплата</a></li>
-                    <li class="center__item"><a class="nav__link" href="{{ route('contacts') }}">Контакты</a></li>
+                    <li class="center__item"><a class="nav__link" href="{{ route('contacts') }}" aria-label="Нажав ссылку, Вы переместитесь в раздел контакты">Контакты</a></li>
                 </ul>
                 <p class="center__text">Copyright &copy;&nbsp;2024, Kitchen Nuances, All Rights Reserved</p>
             </div>
@@ -198,6 +200,10 @@
 <script src="https://api-maps.yandex.ru/2.1/?apikey=вашAPI-ключ&lang=ru_RU" defer></script>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
 <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js" defer></script>
+<!-- FingerPrint JS -->
+<script src="{{ asset('assets/js/fp2.js') }}" defer></script>
+<!-- ChatBot JS -->
+<script src="{{ asset('assets/js/chatbot.js') }}" defer></script>
 <script src="{{ asset('assets/js/style.js') }}" defer></script>
 </body>
 </html>

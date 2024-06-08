@@ -25,10 +25,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[ProductController::class,'index'])->name('home_page');
 //Route::get('/', function () {return view('welcome');})->name('home_page');
 
-//ToDo временный роут для чата. Потом удалить
-Route::get('/chat', function () {
-    return view('index');
-});
+////ToDo временный роут для чата. Потом удалить
+//Route::get('/chat', function () {
+//    return view('index');
+//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

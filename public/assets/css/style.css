@@ -286,6 +286,18 @@ a.user {
     width: 500px;
 }
 
+.btn {
+    background: var(--color-orange);
+    color: white;
+    padding: 4px 7px;
+    border-radius: 3px;
+}
+
+.btn:hover {
+    background: var(--color-white);
+    color: black;
+}
+
 .btn-add {
     background-color: var(--color-orange);
     color: white;
@@ -293,6 +305,8 @@ a.user {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 25%;
+    text-align: center;
 }
 
 .btn-add:hover {
@@ -888,7 +902,7 @@ main {
     align-items: center;
 }
 
-.basket__btn{
+.basket__btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -900,6 +914,7 @@ main {
 .clear {
     order: 1;
 }
+
 .decoration {
     order: 0;
 }
@@ -966,6 +981,7 @@ main {
     font-family: 'OpenSans', sans-serif;
     color: var(--dark-DEFAULT);
 }
+
 /*____________________Brands_______________________*/
 
 .brand-center {
@@ -1056,7 +1072,7 @@ main {
 }
 
 
-.brand__title, .category__title{
+.brand__title, .category__title {
     margin: 20px 0;
 }
 
@@ -1064,4 +1080,70 @@ main {
     color: var(--color-white);
     background-color: var(--color-Armadillo);
     padding: 75px;
+}
+
+.orders-center {
+    color: var(--color-white);
+    background-color: var(--color-Armadillo);
+    padding: 130px 75px 75px 75px;
+}
+
+.orders {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.basket_count{
+    background: var(--color-orange);
+    padding: 10px;
+    border-radius: 8% 100%;
+    position: relative;
+    left: -23px;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.orders__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.orders__form{
+    margin-bottom: 20px;
+}
+
+.form-control_color {
+    color: var(--color-black);
+}
+
+.orders-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 90px;
+    padding: 10px 30px;
+    justify-content: center;
+    margin: auto;
+    color: var(--color-white);
+    background: var(--color-orange);
+    border-radius: 5px;
+}
+
+.btn-delete {
+    background-color: var(--color-Medium-Vermilion);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
 }

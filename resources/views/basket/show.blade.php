@@ -50,10 +50,12 @@
                     </tbody>
                 </table>
                 <div class="basket__btn">
-                    <form class="clear" action="{{ route('basket.delete', $basket->id) }}" method="POST">
+                    <form class="btn btn-add clear" action="{{ route('basket.delete', $basket->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-add">Очистить корзину</button>
+                        <button type="submit"
+{{--                                class="btn btn-add"--}}
+                        >Очистить корзину</button>
                     </form>
 
                     <a href="{{ route('orders.create') }}" class="btn btn-add decoration">Оформить заказ</a>
