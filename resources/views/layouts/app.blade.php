@@ -41,11 +41,14 @@
                                 <ul class="header__drop-list reset-list">
                                     <li class="header__dropdown-item"><a
                                             class="header__item-link header__item-link--tintoretto"
-                                            href="{{ route('categories.index') }}" alt="Кнопка с категориями по нажатию, Вам будет доступен перечень всех категорий товаров"><span
+                                            href="{{ route('categories.index') }}"
+                                            alt="Кнопка с категориями по нажатию, Вам будет доступен перечень всех категорий товаров"><span
                                                 class="header__item-text">Категории</span></a></li>
                                     <li class="header__dropdown-item"><a
                                             class="header__item-link header__item-link--fridrih"
-                                            href="{{ route('brands.index') }}" alt="Кнопка с брендами по нажатию, Вам будет доступен перечень всех брендов товаров">Бренд</a></li>
+                                            href="{{ route('brands.index') }}"
+                                            alt="Кнопка с брендами по нажатию, Вам будет доступен перечень всех брендов товаров">Бренд</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -86,21 +89,44 @@
                 </a>
                 @auth
                     <li>
-                        <a href="{{ route('profile.edit') }}" alt="Ссылка на профиль пользователя">
-                            {{ __('Profile') }}
+                        <a class="menu_user_icon user" href="{{ route('profile.edit') }}"
+                           alt="Ссылка на профиль пользователя">
+                            {{--                            {{ __('Profile') }}--}}
+                            <svg height="31px"
+                                 style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+                                 viewBox="0 0 32 32" width="28px" xml:space="preserve"
+                                 xmlns="http://www.w3.org/2000/svg"
+
+                                 xmlns:xlink="http://www.w3.org/1999/xlink"><path
+                                    d="M4.554,23.764c-0.111,0.322 -0.049,0.679 0.163,0.946c2.544,3.201 6.645,5.29 11.273,5.29c4.628,0 8.729,-2.089 11.273,-5.29c0.212,-0.267 0.273,-0.624 0.163,-0.946c-1.538,-4.485 -6.07,-7.764 -11.436,-7.764c-5.366,0 -9.898,3.279 -11.436,7.764Zm2.088,0.131c1.441,-3.458 5.093,-5.895 9.348,-5.895c4.255,0 7.907,2.437 9.348,5.895c-2.206,2.508 -5.577,4.105 -9.348,4.105c-3.771,0 -7.142,-1.597 -9.348,-4.105l0,-0Z"
+                                    fill="white"/>
+                                <path
+                                    d="M15.99,2c-3.312,0 -6,2.689 -6,6c-0,3.311 2.688,6 6,6c3.311,0 6,-2.689 6,-6c-0,-3.311 -2.689,-6 -6,-6Zm-0,2c2.208,0 4,1.792 4,4c-0,2.208 -1.792,4 -4,4c-2.208,0 -4,-1.792 -4,-4c-0,-2.208 1.792,-4 4,-4Z"
+                                    fill="white"/></svg>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }} "
-                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();" alt="Ссылка выход из профиль пользователя">
-                            {{ __('Log out') }}
+                        <a class="menu_user_icon user" href="{{ route('logout') }} "
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                           alt="Ссылка выход из профиль пользователя">
+                            {{--                            {{ __('Log out') }}--}}
+                            <svg  width="31px" height="26px"  fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path
+                                        d="M4,12a1,1,0,0,0,1,1h7.59l-2.3,2.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l4-4a1,1,0,0,0,.21-.33,1,1,0,0,0,0-.76,1,1,0,0,0-.21-.33l-4-4a1,1,0,1,0-1.42,1.42L12.59,11H5A1,1,0,0,0,4,12ZM17,2H7A3,3,0,0,0,4,5V8A1,1,0,0,0,6,8V5A1,1,0,0,1,7,4H17a1,1,0,0,1,1,1V19a1,1,0,0,1-1,1H7a1,1,0,0,1-1-1V16a1,1,0,0,0-2,0v3a3,3,0,0,0,3,3H17a3,3,0,0,0,3-3V5A3,3,0,0,0,17,2Z" fill="white"></path>
+                                </g>
+                            </svg>
+
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </li>
                 @else
-                    <li><a class="menu_user_icon user" href="{{ route('login') }}" alt="Ссылка на страницу регистрации и аутентификации">
+                    <li><a class="menu_user_icon user" href="{{ route('login') }}"
+                           alt="Ссылка на страницу регистрации и аутентификации">
                             <svg height="31px"
                                  style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
                                  viewBox="0 0 32 32" width="28px" xml:space="preserve"
@@ -150,7 +176,9 @@
                             <img class="logo-footer"
                                  src="{{ asset('assets/image/Логотип.svg') }}"
                                  alt="Логотип который перебросит Вас на главную страницу"></a></li>
-                    <li class="left__item left-text"><a href="{{ route('home_page') }}" alt="Надпись магазина которая перебросит Вас на главную страницу">Интернет магазин бытовой
+                    <li class="left__item left-text"><a href="{{ route('home_page') }}"
+                                                        alt="Надпись магазина которая перебросит Вас на главную страницу">Интернет
+                            магазин бытовой
                             кухонной
                             техники</a></li>
                 </ul>
@@ -168,7 +196,7 @@
                                     <li class="header__dropdown-item2"><a
                                             class="header__item-link header__item-link--tintoretto"
                                             href="{{ route('categories.index') }}"><span
-                                                class="header__item-text" >Категории</span></a></li>
+                                                class="header__item-text">Категории</span></a></li>
                                     <li class="header__dropdown-item2"><a
                                             class="header__item-link header__item-link--fridrih"
                                             href="{{ route('brands.index') }}">Бренд</a></li>
@@ -176,9 +204,13 @@
                             </div>
                         </div>
                     </li>
-                    <li class="center__item"><a class="nav__link" href="{{ route('delivery-payment') }}" aria-label="Нажав ссылку, Вы переместитесь в раздел доставка и оплата">Доставка и
+                    <li class="center__item"><a class="nav__link" href="{{ route('delivery-payment') }}"
+                                                aria-label="Нажав ссылку, Вы переместитесь в раздел доставка и оплата">Доставка
+                            и
                             оплата</a></li>
-                    <li class="center__item"><a class="nav__link" href="{{ route('contacts') }}" aria-label="Нажав ссылку, Вы переместитесь в раздел контакты">Контакты</a></li>
+                    <li class="center__item"><a class="nav__link" href="{{ route('contacts') }}"
+                                                aria-label="Нажав ссылку, Вы переместитесь в раздел контакты">Контакты</a>
+                    </li>
                 </ul>
                 <p class="center__text">Copyright &copy;&nbsp;2024, Kitchen Nuances, All Rights Reserved</p>
             </div>

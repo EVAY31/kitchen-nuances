@@ -1082,7 +1082,7 @@ main {
     padding: 75px;
 }
 
-.orders-center {
+.orders-center, .edit-center {
     color: var(--color-white);
     background-color: var(--color-Armadillo);
     padding: 130px 75px 75px 75px;

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <section class="choice container">
+    <section class="container choice">
         <div class="choice_visualization">
             <h2 class="decoration__item">{{ $product->title }}</h2>
             <img class="choice_image" src="{{ asset('storage/' . $product->image) }}" alt="">
