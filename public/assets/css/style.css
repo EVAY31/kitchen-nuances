@@ -1147,3 +1147,19 @@ main {
     width: 100%;
     text-align: center;
 }
+
+.product-main {
+    color: var(--color-white);
+    background-color: var(--color-Armadillo);
+    padding: 150px 0;
+}
+
+.product__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /*padding: 10px 200px 100px 200px;*/
+    flex-wrap: wrap;
+    row-gap: 150px;
+}

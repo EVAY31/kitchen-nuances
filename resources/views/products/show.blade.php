@@ -8,30 +8,6 @@
         <div class="description"><p class="decoration__item">{!! $product->description !!}</p>
             <h3 class="decoration__item">Характеристики:</h3>
             <ul class="decoration__item">
-                {{--                        @if(!empty($product->characteristics))--}}
-                {{--                                <ul>--}}
-                {{--                                    @foreach($product->characteristics as $key => $value)--}}
-                {{--                                        <li>{{ $key }}: {{ $value }}</li>--}}
-                {{--                                    @endforeach--}}
-                {{--                                </ul>--}}
-                {{--                        @endif--}}
-
-
-                {{--                        @if(!empty($product->characteristics))--}}
-                {{--                            @php--}}
-                {{--                                $characteristics = json_decode($product->characteristics, true);--}}
-                {{--                            @endphp--}}
-
-                {{--                            @if(is_array($characteristics))--}}
-                {{--                                <ul>--}}
-                {{--                                    @foreach($characteristics as $key => $value)--}}
-                {{--                                        <li>{{ $key }}: {{ $value }}</li>--}}
-                {{--                                    @endforeach--}}
-                {{--                                </ul>--}}
-                {{--                            @endif--}}
-                {{--                        @endif--}}
-
-
 
                 {{--                        @if(!empty($product->characteristics))--}}
                 {{--                            @php--}}
@@ -73,8 +49,6 @@
                         <p>Некорректные данные характеристик</p>
                     @endif
                 @endif
-
-
             </ul>
             <p class="decoration__item">Цена: {{ number_format($product->price, 2, '.', ' ') }} &#8381;</p>
             @if(! session('basket'))
@@ -106,6 +80,5 @@
                 @endif
             @endif
         </div>
-        {{--        @dd(session('basket'))--}}
     </section>
 @endsection

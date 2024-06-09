@@ -51,28 +51,7 @@
     }
 }
 
-
-/*@media all and (max-width: 1920px){*/
-/*    main {*/
-/*        padding-top: 5.2%;*/
-/*    }*/
-/*}*/
-
-/*@media all and (max-width: 1700px) {*/
-/*    .container {*/
-/*        margin: 0 auto;*/
-/*        padding: 0 52px;*/
-/*        max-width: 1700px;*/
-/*        color: var(--color-white);*/
-/*    }*/
-
-/*    main {*/
-/*        padding-top: 4.2%;*/
-/*    }*/
-/*}*/
-
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
-    /*@media all and (max-width: 1440px) {*/
     .container {
         padding: 15px;
         max-width: 1024px;
@@ -162,7 +141,6 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    /*@media all and (max-width: 1024px) {*/
     .container {
         max-width: 768px;
         padding: 0;
@@ -548,11 +526,19 @@
         margin-right: 0px;
         margin-bottom: 50px;
     }
+
+    .product__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 95px 100px 95px;
+        flex-wrap: wrap;
+        row-gap: 150px;
+    }
 }
 
 @media only screen and (min-width: 435px) and (max-width: 767px) {
-
-    /*@media all and (max-width: 1024px) {*/
     .container {
         max-width: 435px;
         padding: 0 7px;
@@ -1068,6 +1054,16 @@
 
     .description {
         width: 400px;
+    }
+
+    .product__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 100px 10px;
+        flex-wrap: wrap;
+        row-gap: 150px;
     }
 }
 
@@ -1599,5 +1595,21 @@
 
     .description {
         width: 300px;
+    }
+
+    .product-main {
+        color: var(--color-white);
+        background-color: var(--color-Armadillo);
+        padding: 100px 0;
+    }
+
+    .product__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px 100px 15px;
+        flex-wrap: wrap;
+        row-gap: 175px;
     }
 }
