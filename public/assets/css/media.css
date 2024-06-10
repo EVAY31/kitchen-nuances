@@ -138,6 +138,10 @@
     .container__left, .container__right {
         margin-top: 50px;
     }
+
+    .sorting__list:not(:last-child) {
+        margin-right: 0;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -464,6 +468,10 @@
         height: 300px;
         background-color: #6c757d;
         border-radius: 10px;
+    }
+
+    .sorting__list {
+        margin-right: 0;
     }
 
     .sorting__list:not(:last-child) {
@@ -934,6 +942,10 @@
         padding: 50px 0 100px 0;
         flex-wrap: wrap;
         row-gap: 100px;
+    }
+
+    .sorting__list {
+        margin-right: 0;
     }
 
     .sorting__list:not(:last-child) {
@@ -1470,6 +1482,10 @@
 
     .brand__title, .category__title {
         margin: 0;
+    }
+
+    .sorting__list {
+        margin-right: 0;
     }
 
     .sorting__list:not(:last-child) {

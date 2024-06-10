@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section class="product-main">
-            <div class="container product__container">
+            <div class="container product__container sorting__list">
                 @if($products->isEmpty())
                     <p>В этой категории нет продуктов.</p>
                 @else
